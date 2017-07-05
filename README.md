@@ -1,13 +1,10 @@
-<<<<<<< HEAD
-# web-dev-template
-
-1. git clone https://github.com/jannunzi/web-dev-template.git
-1. cd web-dev-template
-1. npm install
-1. mongod
-1. node server.js
-1. browse to localhost:3000
 =======
 # amirova-anastaisa-webdev
 CS5610
->>>>>>> 33fb58f5cade9fedaa20251d9735f0eec23b26cc
+I'm an undergrad CS student at NEU. My past WebDev experience includes restructuring corporate websites to fit the Bootstrap framework and messing around with simple HTML/CSS back in the MySpace and Neopets days. 
+
+This repository will house assignments from my Summer 2 2017 CS5610 Web Dev class. 
+
+>> Heroku root: https://amirova-anastaisa-webdev.herokuapp.com/
+>> Final project: tbd
+>> Assignment: tbd
