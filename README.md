@@ -8,6 +8,6 @@ This repository will house assignments from my Summer 2 2017 CS5610 Web Dev clas
 
 > Heroku root: https://amirova-anastaisa-webdev.herokuapp.com/
 
-> Final project: tbd
+> Final project: https://amirova-anastaisa-webdev.herokuapp.com/
 
-> Assignment: tbd
+> Assignment: https://amirova-anastaisa-webdev.herokuapp.com/assignment/index.html
