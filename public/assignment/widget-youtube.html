@@ -2,9 +2,89 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Youtube Widget</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
 </head>
 <body>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="navbar-header col-sm-12 col-md-8">
+                <p class="navbar-text pull-left hidden-md hidden-lg">
+                    <a href="widget-list.html" class="navbar-link">
+                    <span class="glyphicon glyphicon-chevron-left">
+                    </span>
+                    </a>
+                </p>
+                <a class="navbar-brand" href="#">
+                    Widget Edit
+                </a>
+                <p class="navbar-text pull-right">
+                    <a href="widget-list.html" class="navbar-link">
+          <span class="glyphicon glyphicon-ok">
+          </span>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
 
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="list-group hidden-xs hidden-sm col-md-4">
+            <a href="#" class="list-group-item">page one
+                <span class="glyphicon glyphicon-cog pull-right"></span></a>
+            <a href="#" class="list-group-item">page two
+                <span class="glyphicon glyphicon-cog pull-right"></span></a>
+        </div>
+        <div class="col-md-8">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text"
+                       class="form-control"
+                       placeholder="Widget Name"/>
+                <label for="text">Text</label>
+                <input type="text"
+                       class="form-control"
+                       placeholder="Widget Text"/>
+                <label for="url">URL</label>
+                <input type="text"
+                       class="form-control"
+                       placeholder="Size"/>
+                <label for="width">Width</label>
+                <input type="text"
+                       class="form-control"
+                       placeholder="Widget width"/>
+            </div>
+            <a class="btn btn-danger  btn-block"
+               href="#">Delete</a>
+        </div>
+        <!--<input type="text"-->
+        <!--class="form-control"-->
+        <!--placeholder="Description"/>-->
+    </div>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+        <div class="row navbar-text col-xs-12">
+            <div class="pull-left">
+                <a href="website-list.html">
+                    <span class="glyphicon glyphicon-home"></span>
+                </a>
+            </div>
+            <div class="pull-right">
+                <a href="profile.html">
+                    <span class="glyphicon glyphicon-user"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
 </body>
 </html>
