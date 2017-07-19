@@ -6,3 +6,20 @@ body {
     padding-top: 50px;
 }
 
+widget-setting {
+    position: absolute;
+    right: 0px;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+edit-cog {
+
+}
+
+element-list {
+    /*margin: 10px;*/
+    /*padding-top: 10px;*/
+}

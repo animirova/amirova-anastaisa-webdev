@@ -14,7 +14,7 @@
         <div class="row">
             <div class="navbar-header hidden-xs hidden-sm col-md-4">
                 <p class="navbar-text pull-left">
-                    <a href="profile.html" class="navbar-link">
+                    <a href="website-list.html" class="navbar-link">
                     <span class="glyphicon glyphicon-chevron-left">
                     </span>
                     </a>
@@ -23,7 +23,7 @@
                     Websites
                 </a>
                 <p class="navbar-text pull-right">
-                    <a href="#" class="navbar-link">
+                    <a href="website-new.html" class="navbar-link">
           <span class="glyphicon glyphicon-plus">
           </span>
                     </a>
@@ -31,16 +31,16 @@
             </div>
             <div class="navbar-header col-sm-12 col-md-8">
                 <p class="navbar-text pull-left hidden-md hidden-lg">
-                    <a href="profile.html" class="navbar-link">
+                    <a href="website-list.html" class="navbar-link">
                     <span class="glyphicon glyphicon-chevron-left">
                     </span>
                     </a>
                 </p>
                 <a class="navbar-brand" href="#">
-                    New Website
+                    Edit Website
                 </a>
                 <p class="navbar-text pull-right">
-                    <a href="#" class="navbar-link">
+                    <a href="website-list.html" class="navbar-link">
           <span class="glyphicon glyphicon-ok">
           </span>
                     </a>
@@ -53,11 +53,22 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="list-group hidden-xs hidden-sm col-md-4">
-            <a href="#" class="list-group-item">website one
-                <span class="glyphicon glyphicon-cog pull-right"></span></a>
-            <a href="#" class="list-group-item">website two
-                <span class="glyphicon glyphicon-cog pull-right"></span></a>
+        <!--<div class="list-group hidden-xs hidden-sm col-md-4 btn-toolbar" role="toolbar">-->
+            <!--<a href="page-list.html" class="list-group-item btn-group" role="group">website one</a>-->
+                <!--<a href=""><span class="glyphicon glyphicon-cog pull-right"></span></a>-->
+            <!--<a href="page-list.html" class="list-group-item btn-group" role="group">website two-->
+                <!--<span class="glyphicon glyphicon-cog pull-right"></span></a>-->
+        <!--</div>-->
+        <div class="hidden-xs hidden-sm col-md-4 element-list list-group">
+            <div class="btn-toolbar list-group-item" role="toolbar">
+                <a href="page-list.html" class="btn-group" role="group">website one</a>
+                <a href="website-edit.html"><span class="glyphicon glyphicon-cog pull-right btn-group"></span></a>
+            </div>
+
+            <div class="btn-toolbar list-group-item" role="toolbar">
+                <a href="page-list.html" class="btn-group" role="group">website two</a>
+                <a href="website-edit.html"><span class="glyphicon glyphicon-cog pull-right btn-group"></span></a>
+            </div>
         </div>
         <div class="col-md-8">
             <div class="form-group">
