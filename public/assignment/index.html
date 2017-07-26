@@ -1,10 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="WebAppMaker">
 <head>
     <meta charset="UTF-8">
-    <title>Assignment Home Page</title>
+    <title>Title</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"></script>
+    <script src="app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.js"></script>
+    <script src="config.js"></script>
+    <script src="views/user/controllers/login.controller.client.js"></script>
+    <script src="views/user/controllers/register.controller.client.js"></script>
+    <script src="views/user/controllers/profile.controller.client.js"></script>
+    <script src="views/website/controllers/website-list.controller.client.js"></script>
+    <script src="views/website/controllers/website-edit.controller.client.js"></script>
+    <script src="views/website/controllers/website-new.controller.client.js"></script>
+    <script src="views/page/controllers/page-new.controller.client.js"></script>
+    <script src="views/page/controllers/page-edit.controller.client.js"></script>
+    <script src="views/page/controllers/page-list.controller.client.js"></script>
+    <script src="views/widget/controllers/widget-list.controller.client.js"></script>
+    <script src="views/widget/controllers/widget-new.controller.client.js"></script>
+    <script src="views/widget/controllers/widget-edit.controller.client.js"></script>
+    <script src="services/user.service.client.js"></script>
+    <script src="services/website.service.client.js"></script>
+    <script src="services/page.service.client.js"></script>
+    <script src="services/widget.service.client.js"></script>
+    <!--<script src="views/user/controllers/login.controller.client.js"></script>-->
+    <!--<script src="views/user/controllers/login.controller.client.js"></script>-->
+    <!--<script src="views/user/controllers/login.controller.client.js"></script>-->
+    <!--<script src="views/user/controllers/login.controller.client.js"></script>-->
+    <!--<script src="views/user/controllers/login.controller.client.js"></script>-->
+    <!--<script src="views/user/controllers/login.controller.client.js"></script>-->
+    <!--<script src="views/user/controllers/login.controller.client.js"></script>-->
 </head>
 <body>
-<a href="login.html"><h1>Assignment Home Page</h1></a>
+<div ng-view></div>
+<!--<div class="container">-->
+<!--<div ng-controller="loginController">-->
+<!--<h1>Login</h1>-->
+<!--<input type="text"-->
+<!--class="form-control"-->
+<!--placeholder="username"-->
+<!--ng-model="user.username"/>-->
+<!--<input type="password"-->
+<!--class="form-control"-->
+<!--placeholder="password"-->
+<!--ng-model="user.password"/>-->
+<!--&lt;!&ndash;<a class="btn btn-primary btn-block"&ndash;&gt;-->
+<!--&lt;!&ndash;href="#!/profile.html">Login</a>&ndash;&gt;-->
+<!--<a class="btn btn-primary btn-block"-->
+<!--ng-click="login(user)">Login</a>-->
+<!--&lt;!&ndash;<a class="btn btn-success btn-block"&ndash;&gt;-->
+<!--&lt;!&ndash;href="register.html">Register</a>&ndash;&gt;-->
+<!--<a class="btn btn-success btn-block"-->
+<!--ng-click="register(user)">Register</a>-->
+<!--</div>-->
+
 </body>
 </html>

@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Profile</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="css/style.css" rel="stylesheet"/>
-</head>
-<body>
-
+<div>
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -24,26 +15,48 @@
     <form>
         <div class="form-group">
             <label for="username">Username</label>
-            <input type="text" class="form-control" id="username" placeholder="Username">
+            <input type="text"
+                   class="form-control"
+                   id="username"
+                   placeholder="Username"
+                   ng-model="vm.user.username">
         </div>
         <div class="form-group">
             <label for="email">Email address</label>
-            <input type="email" class="form-control" id="email" placeholder="alice@wonderland.com">
+            <input type="email"
+                   class="form-control"
+                   id="email"
+                   placeholder="alice@wonderland.com"
+                   ng-model="vm.user.email">
         </div>
         <div class="form-group">
             <label for="first-name">First Name</label>
-            <input type="text" class="form-control" id="first-name" placeholder="Alice">
+            <input type="text"
+                   class="form-control"
+                   id="first-name"
+                   placeholder="Alice"
+                   ng-model="vm.user.firstName">
         </div>
         <div class="form-group">
             <label for="last-name">Last Name</label>
-            <input type="text" class="form-control" id="last-name" placeholder="Wonderland">
+            <input type="text"
+                   class="form-control"
+                   id="last-name"
+                   placeholder="Wonderland"
+                   ng-model="vm.user.lastName">
         </div>
     </form>
     <br>
     <a class="btn btn-primary btn-block"
-       href="website-list.html">Websites</a>
+       href="#!/user/{{vm.uid}}/website">Websites</a>
+    <br>
+    <a class="btn btn-primary btn-block"
+       ng-click="vm.updateUsr(vm.user)">Update Profile</a>
     <a class="btn btn-danger  btn-block"
-       href="login.html">Logout</a>
+       href="#!/login">Logout</a>
+    <a class="btn btn-danger  btn-block"
+       ng-click="vm.deleteUsr()">Delete Account</a>
+
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
@@ -70,6 +83,4 @@
             </div>
         </div>
 </nav>
-
-</body>
-</html>
+</div>

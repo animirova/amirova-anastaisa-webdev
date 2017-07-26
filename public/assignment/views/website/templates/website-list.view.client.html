@@ -1,0 +1,54 @@
+<div>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="navbar-header col-xs-12">
+                <p class="navbar-text pull-left col-2">
+                    <a href="#!/user/{{vm.uid}}" class="navbar-link">
+                        <span class="glyphicon glyphicon-chevron-left">
+                        </span>
+                    </a>
+                </p>
+                <a class="navbar-brand col-8" href="#">
+                    Websites
+                </a>
+                <p class="navbar-text pull-right col-2">
+                    <a href="#!/user/{{vm.uid}}/website/new" class="navbar-link">
+                      <span class="glyphicon glyphicon-plus">
+                      </span>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</nav>
+
+    <div class="list-group container-fluid container-list-group element-list">
+
+        <div ng-repeat="website in vm.websites"
+             class="btn-toolbar list-group-item"
+             role="toolbar">
+            <a href="#!/user/{{website.developerId}}/website/{{website._id}}/page" class="btn-group" role="group">{{website.name}}</a>
+            <a href="#!/user/{{website.developerId}}/website/{{website._id}}"><span class="glyphicon glyphicon-cog pull-right btn-group"></span></a>
+        </div>
+
+    </div>
+
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+        <div class="row navbar-text col-xs-12">
+            <div class="col-xs-6 text-center">
+                <a href="#!/user/{{vm.uid}}/website">
+                    <span class="glyphicon glyphicon-home"></span>
+                </a>
+            </div>
+            <div class="col-xs-6 text-center">
+                <a href="#!/user/{{vm.uid}}">
+                    <span class="glyphicon glyphicon-user"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+</div>

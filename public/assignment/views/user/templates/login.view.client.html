@@ -1,0 +1,29 @@
+<div>
+    <div class="container">
+        <div>
+            <div ng-show="vm.errorMessage" class="alert alert-danger">
+                {{vm.errorMessage}}
+            </div>
+
+            <h1>Login</h1>
+            <input type="text"
+                   class="form-control"
+                   placeholder="username"
+                   ng-model="vm.user.username"/>
+            <input type="password"
+                   class="form-control"
+                   placeholder="password"
+                   ng-model="vm.user.password"/>
+
+            <!--<a class="btn btn-primary btn-block"-->
+               <!--href="#!/profile.html">Login</a>-->
+            <a class="btn btn-primary btn-block"
+               ng-click="vm.login(vm.user)">Login</a>
+
+            <!--<a class="btn btn-success btn-block"-->
+               <!--href="register.html">Register</a>-->
+            <a class="btn btn-success btn-block"
+               href="#!/register">Register</a>
+        </div>
+    </div>
+</div>
