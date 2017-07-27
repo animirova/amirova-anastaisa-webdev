@@ -4,6 +4,7 @@ input.form-control {
 
 body {
     padding-top: 60px;
+    padding-bottom: 60px;
 }
 
 widget-setting {
@@ -22,4 +23,8 @@ edit-cog {
 element-list {
     /*margin: 10px;*/
     /*padding-top: 10px;*/
+}
+
+navbar-fixed-bottom {
+    margin-bottom: 60px;
 }

@@ -18,7 +18,6 @@
 
         function login(user){
             var currUsr = userService.findUserByCredentials(user.username, user.password);
-            vm.errorMessage = currUsr;
             if(!currUsr){
                 vm.errorMessage = "User not found!";
             } else {
