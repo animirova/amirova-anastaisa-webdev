@@ -15,19 +15,19 @@
         vm.deletePage = deletePage;
 
         function init() {
-
+            vm.pages = pageService.findPageByWebsiteId(vm.wid);
+            vm.page = pageService.findPageById(vm.pid);
         }
         init();
 
         function updatePage(page) {
             pageService.updatePage(vm.pid, page);
-            $location.url("user/"+vm.uid+'/website'+vm.wid);
-            alert("Site Updated!");
+            $location.url("user/"+vm.uid+'/website/'+vm.wid+'/page');
         }
 
         function deletePage(){
             pageService.deletePage(vm.pid);
-            $location.url("user/"+vm.uid+'/website'+vm.wid);
+            $location.url("user/"+vm.uid+'/website/'+vm.wid+'/page');
         }
 
 

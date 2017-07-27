@@ -1,0 +1,26 @@
+<h3>Youtube Widget</h3>
+                    <label for="name">Name</label>
+                    <input type="text"
+                           class="form-control"
+                           placeholder="Widget Name"
+                           ng-model="$parent.vm.widget.name"/>
+                    <label for="text">Text</label>
+                    <input type="text"
+                           class="form-control"
+                           placeholder="Widget Text"
+                           ng-model="$parent.vm.widget.text"/>
+                    <label for="url">URL</label>
+                    <input type="text"
+                           class="form-control"
+                           placeholder="Size"
+                           ng-model="$parent.vm.widget.size"/>
+                    <label for="width">Width</label>
+                    <input type="text"
+                           class="form-control"
+                           placeholder="Widget width"
+                           ng-model="$parent.vm.widget.width"/>
+                </div>
+                <a class="btn btn-success btn-block"
+                   ng-click="$parent.vm.updateWidget($parent.vm.widget)">Save Changes</a>
+                <a class="btn btn-danger  btn-block"
+                   ng-click="$parent.vm.deleteWidget()">Delete</a>

@@ -1,18 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Choose Widget</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="../css/style.css" rel="stylesheet"/>
-</head>
-<body>
+<div>
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="row">
             <div class="navbar-header col-xs-12">
                 <p class="navbar-text pull-left col-2">
-                    <a href="widget-list.html" class="navbar-link">
+                    <a href="#!/user/{{vm.uid}}/website/{{vm.wid}}/page/{{vm.pid}}/widget" class="navbar-link">
                     <span class="glyphicon glyphicon-chevron-left">
                     </span>
                     </a>
@@ -25,40 +17,61 @@
     </div>
 </nav>
 
-<div class="list-group">
-    <!--<div class="btn-toolbar list-group-item" role="toolbar">-->
-        <!--<a href="page-list.html" class="btn-group" role="group">website one</a>-->
-        <!--<a href="website-edit.html"><span class="glyphicon glyphicon-cog pull-right btn-group"></span></a>-->
+<!--<div class="list-group">-->
+    <!--<a href="widget-heading.html" class="list-group-item">Header-->
+        <!--<span class="glyphicon glyphicon-cog pull-right"></span></a>-->
+    <!--<a href="widget-image.html" class="list-group-item">Image-->
+        <!--<span class="glyphicon glyphicon-cog pull-right"></span></a>-->
+    <!--<a href="widget-youtube.html" class="list-group-item">Youtube-->
+        <!--<span class="glyphicon glyphicon-cog pull-right"></span></a>-->
+<!--</div>-->
+
+<!--<div class="list-group container-fluid container-list-group element-list">-->
+
+    <!--<div ng-repeat="widget in vm.widgets"-->
+         <!--class="btn-toolbar list-group-item"-->
+         <!--role="toolbar">-->
+        <!--<a href="#!/user/{{vm.uid}}/website/{{vm.wid}}/page/{{vm.pid}}/widget" class="btn-group" role="group">{{widget.name}}</a>-->
+        <!--<a href="#!/user/{{vm.uid}}/website/{{vm.wid}}/page/{{vm.pid}}"><span class="glyphicon glyphicon-cog pull-right btn-group"></span></a>-->
     <!--</div>-->
 
-    <!--<div class="btn-toolbar list-group-item" role="toolbar">-->
-        <!--<a href="page-list.html" class="btn-group" role="group">website two</a>-->
-        <!--<a href="website-edit.html"><span class="glyphicon glyphicon-cog pull-right btn-group"></span></a>-->
-    <!--</div>-->
-    <a href="widget-heading.html" class="list-group-item">Header
-        <span class="glyphicon glyphicon-cog pull-right"></span></a>
-    <a href="widget-image.html" class="list-group-item">Image
-        <span class="glyphicon glyphicon-cog pull-right"></span></a>
-    <a href="widget-youtube.html" class="list-group-item">Youtube
-        <span class="glyphicon glyphicon-cog pull-right"></span></a>
-</div>
+<!--</div>-->
 
-
-<nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container">
-        <div class="row navbar-text col-xs-12">
-            <div class="col-xs-6 text-center">
-                <a href="../website/website-list.html">
-                    <span class="glyphicon glyphicon-home"></span>
-                </a>
-            </div>
-            <div class="col-xs-6 text-center">
-                <a href="../user/profile.html">
-                    <span class="glyphicon glyphicon-user"></span>
-                </a>
-            </div>
+    <div class="container-fluid list-group containtainer-list-group">
+        <div class="list-group-item">
+            <a ng-click="vm.addWidget(&quot;HEADING&quot;)">
+                Heading
+            </a>
+        </div>
+        <div class="list-group-item">
+            <a ng-click="vm.addWidget(&quot;IMAGE&quot;)">
+                    <!--href="#!/user/{{vm.uid}}/website/{{vm.wid}}/page/{{vm.pid}}/widget/image/new">-->
+                Image
+            </a>
+        </div>
+        <div class="list-group-item">
+            <a ng-click="vm.addWidget(&quot;YOUTUBE&quot;)">
+                    <!--href="#!/user/{{vm.uid}}/website/{{vm.wid}}/page/{{vm.pid}}/widget/youtube/new">-->
+                Youtube
+            </a>
         </div>
     </div>
-</nav>
-</body>
-</html>
+
+
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container">
+            <div class="row navbar-text col-xs-12">
+                <div class="pull-left">
+                    <a href="#!/user/{{vm.uid}}/website">
+                        <span class="glyphicon glyphicon-home"></span>
+                    </a>
+                </div>
+                <div class="pull-right">
+                    <a href="#!/user/{{vm.uid}}">
+                        <span class="glyphicon glyphicon-user"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>

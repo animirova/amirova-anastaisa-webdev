@@ -13,13 +13,14 @@
         vm.addPage = addPage;
 
         function init() {
-
+            vm.pages = pageService.findPageByWebsiteId(vm.wid);
+            vm.page = pageService.findPageById(vm.pid);
         }
         init();
 
         function addPage(page) {
-            pageService.createPage(page);
-            $location.url("user/"+vm.uid+'/website');
+            pageService.createPage(vm.wid, page);
+            $location.url("user/"+vm.uid+'/website/'+vm.wid+'/page');
         }
 
     }

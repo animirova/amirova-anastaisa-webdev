@@ -1,31 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Widget List</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="../css/style.css" rel="stylesheet"/>
-</head>
-<body>
+<div>
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="row">
             <div class="navbar-header col-xs-12">
                 <p class="navbar-text pull-left">
-                    <a href="../page/page-list.html" class="navbar-link">
-                    <span class="glyphicon glyphicon-chevron-left">
-                    </span>
+                    <a href="#!/user/{{vm.uid}}/website/{{vm.wid}}/page" class="navbar-link">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
                     </a>
                 </p>
+
                 <a class="navbar-brand" href="#">
                     Widgets
                 </a>
+
                 <p class="navbar-text pull-right">
-                    <a href="widget-choose.html" class="navbar-link">
-          <span class="glyphicon glyphicon-plus">
-          </span>
+                    <a href="#!/user/{{vm.uid}}/website/{{vm.wid}}/page/{{vm.pid}}/widget/new" class="navbar-link">
+                        <span class="glyphicon glyphicon-plus"></span>
                     </a>
                 </p>
             </div>
@@ -33,46 +23,69 @@
     </div>
 </nav>
 
-<div class="container-fluid container-list-group list-group col-12">
-    <div class="list-group-item">
-        <span class="widget-setting pull-right pull-top">
-            <a href="widget-image.html"><span class="glyphicon glyphicon-cog"></span></a>
-            <a href=""><span class="glyphicon glyphicon-align-justify"></span></a>
-        </span>
-        <img class="pagination-centered img-responsive img-fluid list-group-item"
-             src="http://www.nintendoworldreport.com/media/37629/4/4.jpg">
-        </img>
-    </div>
-    <div class="list-group-item">
-        <span class="widget-setting pull-right pull-top">
-            <a href="widget-heading.html"><span class="glyphicon glyphicon-cog"></span></a>
-            <a href=""><span class="glyphicon glyphicon-align-justify"></span></a>
-        </span>
-        <h1>Sample Widget</h1>
-    </div>
-    <div class="list-group-item">
-        <span class="widget-setting pull-right pull-top">
-            <a href="widget-youtube.html"><span class="glyphicon glyphicon-cog"></span></a>
-            <a href=""><span class="glyphicon glyphicon-align-justify"></span></a>
-        </span>
-        <div class="embed-responsive embed-responsive-16by9">
-            <iframe class="embed-responsive-item"
-                    src="https://www.youtube.com/embed/HZucs7TNfFI"
-                    frameborder="0" allowfullscreen></iframe>
-        </div>
-    </div>
-</div>
 
-<nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container">
-        <div class="row navbar-text col-xs-12">
-            <div class="pull-right">
-                <a href="../user/profile.html">
-                    <span class="glyphicon glyphicon-user"></span>
-                </a>
+    <div class="container-fluid container-list-group list-group">
+    <div ng-repeat="widget in vm.widgets">
+        <div ng-switch="widget.widgetType">
+            <div ng-switch-when="HEADING">
+                <div class="list-group-item" ng-include="'views/widget/templates/widget-heading.view.client.html'"></div>
+            </div>
+            <div ng-switch-when="IMAGE">
+                <div class="list-group-item" ng-include="'views/widget/templates/widget-image.view.client.html'"></div>
+            </div>
+            <div ng-switch-when="YOUTUBE">
+                <div class="list-group-item" ng-include="'views/widget/templates/widget-youtube.view.client.html'"></div>
+            </div>
+    </div>
+    </div>
+    </div>
+
+
+
+<!--<div class="container-fluid container-list-group list-group col-12">-->
+    <!--<div class="list-group-item">-->
+        <!--<span class="widget-setting pull-right pull-top">-->
+            <!--<a href="widget-image.html"><span class="glyphicon glyphicon-cog"></span></a>-->
+            <!--<a href=""><span class="glyphicon glyphicon-align-justify"></span></a>-->
+        <!--</span>-->
+        <!--<img class="pagination-centered img-responsive img-fluid list-group-item"-->
+             <!--src="http://www.nintendoworldreport.com/media/37629/4/4.jpg">-->
+        <!--</img>-->
+    <!--</div>-->
+    <!--<div class="list-group-item">-->
+        <!--<span class="widget-setting pull-right pull-top">-->
+            <!--<a href="widget-heading.html"><span class="glyphicon glyphicon-cog"></span></a>-->
+            <!--<a href=""><span class="glyphicon glyphicon-align-justify"></span></a>-->
+        <!--</span>-->
+        <!--<h1>Sample Widget</h1>-->
+    <!--</div>-->
+    <!--<div class="list-group-item">-->
+        <!--<span class="widget-setting pull-right pull-top">-->
+            <!--<a href="widget-youtube.html"><span class="glyphicon glyphicon-cog"></span></a>-->
+            <!--<a href=""><span class="glyphicon glyphicon-align-justify"></span></a>-->
+        <!--</span>-->
+        <!--<div class="embed-responsive embed-responsive-16by9">-->
+            <!--<iframe class="embed-responsive-item"-->
+                    <!--src="https://www.youtube.com/embed/HZucs7TNfFI"-->
+                    <!--frameborder="0" allowfullscreen></iframe>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container">
+            <div class="row navbar-text col-xs-12">
+                <div class="pull-left">
+                    <a href="#!/user/{{vm.uid}}/website">
+                        <span class="glyphicon glyphicon-home"></span>
+                    </a>
+                </div>
+                <div class="pull-right">
+                    <a href="#!/user/{{vm.uid}}">
+                        <span class="glyphicon glyphicon-user"></span>
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
-</nav>
-</body>
-</html>
+    </nav>
+</div>

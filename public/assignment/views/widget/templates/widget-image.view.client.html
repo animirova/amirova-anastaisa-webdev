@@ -1,91 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Widget Image</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="../css/style.css" rel="stylesheet"/>
-</head>
-<body>
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="navbar-header col-xs-12">
-                <p class="navbar-text pull-left">
-                    <a href="widget-list.html" class="navbar-link">
-                    <span class="glyphicon glyphicon-chevron-left">
-                    </span>
-                    </a>
-                </p>
-                <a class="navbar-brand" href="#">
-                    Edit Image Widget
-                </a>
-                <p class="navbar-text pull-right">
-                    <a href="widget-list.html" class="navbar-link">
-                    <span class="glyphicon glyphicon-ok">
-                    </span>
-                    </a>
-                </p>
-            </div>
-        </div>
-    </div>
 
-</nav>
+    <span class="widget-setting pull-right pull-top">
+    <a href="#!/user/{{$parent.vm.uid}}/website/{{$parent.vm.wid}}/page/{{$parent.vm.pid}}/widget/{{$parent.widget._id}}">
+        <span class="glyphicon glyphicon-cog"></span>
+    </a>
+    <a href=""><span class="glyphicon glyphicon-align-justify"></span></a>
+    </span>
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text"
-                       class="form-control"
-                       placeholder="Widget Name"/>
-                <label for="text">Text</label>
-                <input type="text"
-                       class="form-control"
-                       placeholder="Widget Text"/>
-                <label for="url">Url</label>
-                <input type="text"
-                       class="form-control"
-                       placeholder="URL"/>
-                <label for="width">Width</label>
-                <input type="text"
-                       class="form-control"
-                       placeholder="Width"/>
-                <label for="upload">Upload</label>
-                <input type="file"
-                       class="form-control"
-                       placeholder="Choose File"/>
-
-            </div>
-            <a class="btn btn-success btn-block"
-               href="widget-list.html">Upload Image</a>
-            <a class="btn btn-danger  btn-block"
-               href="widget-choose.html">Delete</a>
-        </div>
-        <!--<input type="text"-->
-        <!--class="form-control"-->
-        <!--placeholder="Description"/>-->
-    </div>
-</div>
-
-<nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container">
-        <div class="row navbar-text col-xs-12">
-            <div class="pull-left">
-                <a href="../website/website-list.html">
-                    <span class="glyphicon glyphicon-home"></span>
-                </a>
-            </div>
-            <div class="pull-right">
-                <a href="../user/profile.html">
-                    <span class="glyphicon glyphicon-user"></span>
-                </a>
-            </div>
-        </div>
-    </div>
-</nav>
-</body>
-</html>
+    <img width="{{$parent.widget.width}}" ng-src="{{$parent.widget.url}}"> </img>

@@ -4,7 +4,7 @@
         <div class="row">
             <div class="navbar-header hidden-xs hidden-sm col-md-4">
                 <p class="navbar-text pull-left">
-                    <a href="#!/user/{{vm.uid}}/website/{{vm.wid}}" class="navbar-link">
+                    <a href="#!/user/{{vm.uid}}/website/{{vm.wid}}/page" class="navbar-link">
                         <span class="glyphicon glyphicon-chevron-left"></span>
                     </a>
                 </p>
@@ -22,7 +22,7 @@
 
             <div class="navbar-header col-sm-12 col-md-8">
                 <p class="navbar-text pull-left hidden-md hidden-lg">
-                    <a href="#!/user/{{vm.uid}}/website/{{vm.wid}}" class="navbar-link">
+                    <a href="#!/user/{{vm.uid}}/website/{{vm.wid}}/page" class="navbar-link">
                         <span class="glyphicon glyphicon-chevron-left"></span>
                     </a>
                 </p>
@@ -43,16 +43,16 @@
 </nav>
 
 
-        <div class="hidden-xs hidden-sm col-md-4 list-group container-fluid container-list-group element-list">
+        <div class="hidden-xs hidden-sm col-md-4 container-fluid container-list-group list-group">
 
             <div ng-repeat="page in vm.pages"
-                 class="btn-toolbar list-group-item"
-                 role="toolbar">
+                 class="list-group-item">
                 <a href="#!/user/{{vm.uid}}/website/{{vm.wid}}/page/{{page._id}}/widget" class="btn-group" role="group">{{page.name}}</a>
                 <a href="#!/user/{{vm.uid}}/website/{{vm.wid}}/page/{{page._id}}"><span class="glyphicon glyphicon-cog pull-right btn-group"></span></a>
             </div>
 
         </div>
+
 
         <div class="col-md-8">
             <div class="form-group">
@@ -78,12 +78,12 @@
     <div class="container">
         <div class="row navbar-text col-xs-12">
             <div class="pull-left">
-                <a href="../website/website-list.html">
+                <a href="!/user/{{vm.uid}}/website">
                     <span class="glyphicon glyphicon-home"></span>
                 </a>
             </div>
             <div class="pull-right">
-                <a href="../user/profile.html">
+                <a href="!/user/{{vm.uid}}">
                     <span class="glyphicon glyphicon-user"></span>
                 </a>
             </div>

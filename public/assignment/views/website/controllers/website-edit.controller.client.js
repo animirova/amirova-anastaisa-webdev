@@ -16,8 +16,6 @@
         function init() {
             vm.websites = websiteService.findWebsitesByUser(vm.uid);
             vm.website = websiteService.findWebsitesById(vm.wid);
-
-
         }
         init();
 

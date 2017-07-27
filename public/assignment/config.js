@@ -40,7 +40,7 @@
             })
             .when("/user/:uid/website/:wid", {
                 templateUrl: "views/website/templates/website-edit.view.client.html",
-                controller: "pageNewController",
+                controller: "websiteEditController",
                 controllerAs: "vm"
             })
             .when("/user/:uid/website/:wid/page", {
@@ -63,16 +63,47 @@
                 controller: "widgetListController",
                 controllerAs: "vm"
             })
-            // .when("/user/:uid/website/:wid/page/:pid/widget/new", {
-            //     templateUrl: "/views/widget/templates/widget-chooser.view.client.html",
-            //     controller: "loginController",
-            //     controllerAs: "model"
+            .when("/user/:uid/website/:wid/page/:pid/widget/new", {
+                templateUrl: "views/widget/templates/widget-choose.view.client.html",
+                controller: "widgetNewController",
+                controllerAs: "vm"
+            })
+            .when("/user/:uid/website/:wid/page/:pid/widget/:wgid", {
+                templateUrl: "views/widget/templates/widget-edit.view.client.html",
+                controller: "widgetEditController",
+                controllerAs: "vm"
+            })
+            // .when("/user/:uid/website/:wid/page/:pid/widget/heading/:wgid", {
+            //     templateUrl: "views/widget/templates/widget-heading.view.client.html",
+            //     controller: "widgetEditController",
+            //     controllerAs: "vm"
             // })
-            // .when("/user/:uid/website/:wid/page/:pid/widget/:wgid", {
-            //     templateUrl: "/views/widget/templates/widget-edit.view.client.html",
-            //     controller: "loginController",
-            //     controllerAs: "model"
+            // .when("/user/:uid/website/:wid/page/:pid/widget/image/:wgid", {
+            //     templateUrl: "views/widget/templates/widget-image.view.client.html",
+            //     controller: "widgetEditController",
+            //     controllerAs: "vm"
             // })
+            // .when("/user/:uid/website/:wid/page/:pid/widget/youtube/:wgid", {
+            //     templateUrl: "views/widget/templates/widget-youtube.view.client.html",
+            //     controller: "widgetEditController",
+            //     controllerAs: "vm"
+            // })
+            // .when("/user/:uid/website/:wid/page/:pid/widget/youtube/new", {
+            //     templateUrl: "views/widget/templates/widget-youtube.view.client.html",
+            //     controller: "widgetNewController",
+            //     controllerAs: "vm"
+            // })
+            // .when("/user/:uid/website/:wid/page/:pid/widget/image/new", {
+            //     templateUrl: "views/widget/templates/widget-image.view.client.html",
+            //     controller: "widgetNewController",
+            //     controllerAs: "vm"
+            // })
+            // .when("/user/:uid/website/:wid/page/:pid/widget/heading/new", {
+            //     templateUrl: "views/widget/templates/widget-heading.view.client.html",
+            //     controller: "widgetNewController",
+            //     controllerAs: "vm"
+            // })
+
             .otherwise({redirectTo : '/login'});
 
     }

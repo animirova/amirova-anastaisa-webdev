@@ -32,8 +32,8 @@
             var pageId = (new Date).getTime() + "";
             page._id = pageId;
             page.websiteId = websiteId;
-            page.developerId
             pages.push(page);
+            return page;
         }
 
         function findPageByWebsiteId(websiteId) {
@@ -48,14 +48,12 @@
         }
 
         function findPageById(pageId) {
-            var pageList = [];
             for(var p in pages){
                 var currP = pages[p];
                 if(currP._id == pageId){
-                    pageList.push(currP);
+                    return angular.copy(currP);
                 }
             }
-            return pageList;
         }
 
         function updatePage(pageId, page) {
