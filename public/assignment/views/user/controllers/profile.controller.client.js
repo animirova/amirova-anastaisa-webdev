@@ -14,7 +14,11 @@
         vm.deleteUsr = deleteUsr;
 
         function init() {
+            var promise = userService.findUserById(userId);
+            promise.then(function (response) {
+                vm.user = response.data;
 
+            });
         }
 
         init();
@@ -22,7 +26,7 @@
         vm.user = userService.findUserById(vm.uid);
 
         function updateUsr(user) {
-            userService.updateUser(vm.uid, user);
+            userService.updateUser(user);
             $location.url("user/"+vm.uid);
             alert("User Updated!");
         }

@@ -19,7 +19,8 @@
         init();
 
         function addSite(website) {
-            websiteService.createWebsite(vm.uid, website);
+            website.developerId = vm.uid;
+            websiteService.createWebsite(website);
             $location.url("user/"+vm.uid+'/website');
         }
 

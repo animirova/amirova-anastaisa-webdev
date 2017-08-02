@@ -21,7 +21,7 @@
         init();
 
         function updatePage(page) {
-            pageService.updatePage(vm.pid, page);
+            pageService.updatePage(page);
             $location.url("user/"+vm.uid+'/website/'+vm.wid+'/page');
         }
 

@@ -19,7 +19,8 @@
         init();
 
         function addPage(page) {
-            pageService.createPage(vm.wid, page);
+            page.websiteId = vm.wid;
+            pageService.createPage(page);
             $location.url("user/"+vm.uid+'/website/'+vm.wid+'/page');
         }
 

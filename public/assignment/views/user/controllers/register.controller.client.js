@@ -16,9 +16,17 @@
         init();
 
         function addUser(user) {
-            var newUser = userService.createUser(user);
-            $location.url("user/"+newUser._id);
-
+            var promise = userService.findUserByUsername(user.username);
+            promise
+                .then(function (response) {
+                    var _user = response.data;
+                    if(_user === "0") {
+                        _user = userService.createUser(user);
+                        $location.url("/profile/" + user._id);
+                    } else {
+                        vm.error = "User Already Exists!";
+                    }
+                });
         }
 
 

@@ -20,7 +20,8 @@
         init();
 
         function updateSite(site) {
-            websiteService.updateWebsite(vm.wid, site);
+            site._id = vm.wid;
+            websiteService.updateWebsite(site);
             $location.url("user/"+vm.uid+'/website');
             alert("Site Updated!");
         }
