@@ -27,13 +27,15 @@
             "findWidgetsByPageId": findWidgetsByPageId,
             "findWidgetById": findWidgetById,
             "updateWidget": updateWidget,
-            "deleteWidget": deleteWidget
+            "deleteWidget": deleteWidget,
+            "modeWidget" : moveWidget
         };
 
         return api;
 
         function createWidget(widget) {
             var url = "/api/page/"+widget.pageId+"/widget";
+
             return $http.post(url, widget)
                 .then(function(response) {
                     return response.data;
@@ -110,6 +112,11 @@
             // }
         }
 
+        function moveWidget(widgetId, pageId, startIdx, endIdx) {
+            var url = "/api/page/"+pageId+"/widget?startIdx="+startIdx+"&endIdx="+endIdx;
+            return $http.put(url, widgetId);
+
+        }
 
     }
 })();

@@ -15,8 +15,12 @@
 
 
         function init() {
-            var promise = widgetService.findWidgetsByPageId(vm.pid);
-            promise
+            widgetService.findWidgetById(vm.wgid)
+                .then(function(response) {
+                    console.log(vm.widget);
+                    vm.widget = response;
+                });
+            widgetService.findWidgetsByPageId(vm.pid)
                 .then(function(response) {
                     vm.widgets = response.data;
                 });
@@ -27,9 +31,9 @@
             var tempWg = {"pageId": vm.pid, "widgetType": type};
             widgetService.createWidget(tempWg)
                 .then(function (_newWg) {
-                    vm.widget = _newWg;
-                    vm.wgid = _newWg._id;
-                    $location.url("user/"+vm.uid+'/website/'+vm.wid+'/page/'+vm.pid+'/widget/'+vm.wgid);
+                    //vm.widget = _newWg;
+                    //vm.wgid = _newWg._id;
+                    $location.url("user/"+vm.uid+'/website/'+vm.wid+'/page/'+vm.pid+'/widget/'+_newWg._id);
                 });
         }
 

@@ -10,6 +10,8 @@ app.get("/api/widget/:widgetId", findWidgetById);
 app.put("/api/widget/:widgetId", updateWidget);
 app.delete("/api/widget/:widgetId", deleteWidget);
 
+app.put("/api/page/:pageId/widget", widgetMove);
+
 var widgets = [
     { "_id": "123", "widgetType": "HEADING", "pageId": "321", "size": 2, "text": "GIZMODO"},
     { "_id": "234", "widgetType": "HEADING", "pageId": "321", "size": 4, "text": "Lorem ipsum"},
@@ -23,6 +25,17 @@ var widgets = [
     // "https://youtu.be/AM2Ivdi9c4E" },
     { "_id": "789", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"}
 ];
+
+function widgetMove(req, response) {
+    var sIdx = req.query.startIdx;
+    var eIdx = req.query.endIdx;
+    var tmpWdg = widgets[sIdx];
+    widgets[sIdx] = widgets[eIdx];
+    widgets[eIdx] = tmpWdg;
+
+    response.sendStatus(200);
+    return;
+}
 
 
 function createWidget(req, response) {
@@ -83,3 +96,62 @@ function deleteWidget(req, response) {
     }
     response.sendStatus(404);
 }
+
+function findWidget(id) {
+    for(var w in widgets){
+        var currW = widgets[w];
+        if(currW._id === id){
+            return widgets[w];
+        }
+    }
+}
+
+
+var multer = require("multer");
+//var upload = multer({ dest: __dirname+'../public/uploads' });
+//app.post("/api/upload", upload.single('myFile'), uploadImage);
+
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'public/uploads/');
+    },
+    filename: function (req, file, cb) {
+        var fileName = file.originalname;
+        console.log(fileName);
+        cb(null, fileName);
+    }
+});
+
+var upload = multer({ storage : storage });
+app.post("/api/upload", upload.single('myFile'), uploadImage);
+
+function uploadImage(req, response) {
+        var wgid      = req.body.widgetId;
+        var width         = req.body.width;
+        var myFile        = req.file;
+        var text            = req.body.text;
+
+        var uid = req.body.userId;
+        var wid = req.body.websiteId;
+        var pid = req.body.pageId;
+
+        var originalname  = myFile.originalname;
+        var filename      = myFile.filename;
+        var path          = myFile.path;
+        var destination   = myFile.destination;
+        var size          = myFile.size;
+        var mimetype      = myFile.mimetype;
+
+        var widget = findWidget(wgid);
+        widget.url = '../uploads/'+filename;
+        widget.width = width;
+        widget.name = filename;
+        widget.text = text;
+        console.log(widgets);
+
+        var callbackUrl   = "../assignment/#!/user/"+uid+"/website/"+wid+"/page/"+pid+"/widget/"+wgid;
+        response.redirect(callbackUrl);
+
+
+    }
+

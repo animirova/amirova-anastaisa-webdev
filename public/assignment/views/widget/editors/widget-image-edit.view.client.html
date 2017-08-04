@@ -1,40 +1,50 @@
+<form action="/api/upload" method="post" enctype="multipart/form-data" class="container-fluid">
+    <div class="form-group container-list-group">
 <h3>Image Widget</h3>
                         <label for="name">Name</label>
                         <input type="text"
                                class="form-control"
                                placeholder="Widget Name"
-                               ng-model="$parent.vm.widget.name"/>
+                               ng-model="vm.widget.name"/>
 
                         <label for="text">Text</label>
                         <input type="text"
                                class="form-control"
                                placeholder="Widget Text"
-                               ng-model="$parent.vm.widget.text"/>
+                               ng-model="vm.widget.text"/>
 
                         <label for="url">Url</label>
                         <input type="text"
                                class="form-control"
                                placeholder="URL"
-                               ng-model="$parent.vm.widget.url"/>
+                               ng-model="vm.widget.url"/>
 
                         <label for="width">Width</label>
                         <input type="text"
                                class="form-control"
                                placeholder="Width"
-                               ng-model="$parent.vm.widget.width"/>
+                               ng-model="vm.widget.width"/>
 
                         <label for="upload">Upload</label>
-                        <input type="file"
+                        <input name="myFile"
+                                type="file"
                                class="form-control"
                                placeholder="Choose File"
-                               ng-model="$parent.vm.widget.upload"/>
+                               ng-model="vm.widget.upload"/>
+
+        <input  name="width"     value="{{$parent.vm.widget.width}}" style="display: none"/>
+        <input  name="userId"    value="{{$parent.vm.uid}}"   style="display: none"/>
+        <input  name="websiteId" value="{{$parent.vm.wid}}"   style="display: none"/>
+        <input  name="pageId"    value="{{$parent.vm.pid}}"   style="display: none"/>
+        <input  name="widgetId"  value="{{$parent.vm.widget._id}}"   style="display: none"/>
+        <input  name="widget"  value="{{$parent.vm.widget}}"   style="display: none"/>
 
 
-                    </div>
-                    <a class="btn btn-success btn-block"
-                       ng-click="$parent.vm.updateWidget($parent.vm.widget)">Save Changes</a>
-                    <a class="btn btn-danger  btn-block"
+        <button class="btn btn-primary btn-block form-control" type="Submit">Save Changes</button>
+                    <a class="btn btn-primary btn-danger btn-block form-control"
                        ng-click="$parent.vm.deleteWidget()">Delete</a>
-                <!--<input type="text"-->
+
+</div>
+</form>                <!--<input type="text"-->
                 <!--class="form-control"-->
                 <!--placeholder="Description"/>-->

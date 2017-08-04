@@ -18,6 +18,7 @@
         function init() {
             widgetService.findWidgetById(vm.wgid)
                 .then(function(response) {
+                    console.log(vm.widget);
                     vm.widget = response;
                 });
         }
