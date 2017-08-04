@@ -6,8 +6,8 @@ var app = require("../express");
 // http handlers
 app.get("/api/users", getAllUsers);
 app.post("/api/user", createUser);
-app.get("/api/user?username=username", findUserByUsername);
-app.get("/api/user?username=username&password=password", findUserByCredentials);
+//app.get("/api/user?username=username", findUserByUsername);
+app.get("/api/user", findUserByCredentials);
 app.get("/api/user/:uid", findUserById);
 app.put("/api/user/:uid", updateUser);
 app.delete("/api/user/:uid", deleteUser);
@@ -21,14 +21,16 @@ var users = [
 
 function getAllUsers(req, response) {
     response.send(users);
+    return users;
 }
 
 function createUser(req, response) {
     var newUser = req.body;
+    console.log(newUser);
     newUser._id = (new Date).getTime() + "";
     users.push(newUser);
     response.send(newUser);
-    return;
+    return newUser;
 }
 
 function findUserByUsername(req, response) {
@@ -46,7 +48,7 @@ function findUserById(req, response) {
     for(var u in users) {
         if(users[u]._id === req.params.uid) {
             response.send(users[u]);
-            return;
+            return users[u];
         }
     }
     response.send("0");
@@ -55,12 +57,22 @@ function findUserById(req, response) {
 function findUserByCredentials(req, response) {
     var username = req.query.username;
     var password = req.query.password;
-    for(var u in users) {
-        var currU = users[u];
-        if(currU.username == username &&
-            currU.password == password){
-            response.send(currU);
-            return;
+    if (username && password) {
+        for (var u in users) {
+            var currU = users[u];
+            if (currU.username === username &&
+                currU.password === password) {
+                response.send(currU);
+                return users[u];
+            }
+        }
+    } else if (username) {
+        for (var u in users) {
+            if(users[u].username === username &&
+                    users[u].password === password) {
+                response.send(users[u]);
+                return users[u];
+            }
         }
     }
     response.send("0");
@@ -76,7 +88,7 @@ function updateUser(req, response) {
             return;
         }
     }
-    response.send("0");
+    response.sendStatus(404);
 }
 
 
@@ -86,9 +98,9 @@ function deleteUser(req, response) {
         var currU = users[u];
         if(currU._id == user._id){
             delete users[u];
-            response.send(user);
+            response.sendStatus(200);
             return;
         }
     }
-    response.send("0");
+    response.sendStatus(404);
 }

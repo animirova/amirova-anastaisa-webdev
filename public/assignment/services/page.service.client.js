@@ -28,9 +28,12 @@
 
         return api;
 
-        function createPage(page) {
+        function createPage(page, uid) {
             var url = "/api/website/"+page.websiteId+"/page";
-            return $http.post(url, page);
+            return $http.post(url, page)
+                .then(function(response) {
+                return response.data;
+            });
 
             // var pageId = (new Date).getTime() + "";
             // page._id = pageId;
@@ -41,7 +44,10 @@
 
         function findPageByWebsiteId(websiteId) {
             var url = "/api/website/"+websiteId+"/page";
-            return $http.get(url, websiteId);
+            return $http.get(url, websiteId)
+                .then(function(response) {
+                return response.data;
+            });
 
             // var pageList = [];
             // for(var p in pages){
@@ -55,7 +61,10 @@
 
         function findPageById(pageId) {
             var url = "/api/page/"+pageId;
-            return $http.get(url, pageId);
+            return $http.get(url, pageId)
+                .then(function(response) {
+                    return response.data;
+                });
 
             // for(var p in pages){
             //     var currP = pages[p];
@@ -67,7 +76,10 @@
 
         function updatePage(page) {
             var url = "/api/page/"+page._id;
-            return $http.put(url, page);
+            return $http.put(url, page)
+                .then(function(response) {
+                    return response.data;
+                });
 
             // for(var p in pages){
             //     var currP = pages[p];

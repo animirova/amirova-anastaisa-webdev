@@ -14,21 +14,35 @@
         vm.deleteSite = deleteSite;
 
         function init() {
-            vm.websites = websiteService.findWebsitesByUser(vm.uid);
-            vm.website = websiteService.findWebsitesById(vm.wid);
+            websiteService.findWebsitesByUser(vm.uid)
+                .then(function(response) {
+                    vm.websites = response;
+                });
+            websiteService.findWebsitesById(vm.wid, vm.uid)
+                .then(function(response) {
+                    vm.website = response;
+                });
         }
         init();
 
         function updateSite(site) {
             site._id = vm.wid;
-            websiteService.updateWebsite(site);
-            $location.url("user/"+vm.uid+'/website');
-            alert("Site Updated!");
+            websiteService.updateWebsite(site)
+                .then(function(response) {
+                    var _site = response;
+                    console.log("in web-edit");
+                    console.log(_site);
+                    $location.url("/user/"+vm.uid+'/website');
+                    alert("Site Updated!");
+                });
         }
 
         function deleteSite(){
-            websiteService.deleteWebsite(vm.wid);
-            $location.url("user/"+vm.uid+'/website');
+            websiteService.deleteWebsite(vm.wid, vm.uid)
+                .then(function(response) {
+                    var _siteId = response.data;
+                    $location.url("/user/"+vm.uid+'/website');
+                });
         }
 
 

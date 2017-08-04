@@ -15,22 +15,32 @@
         vm.deletePage = deletePage;
 
         function init() {
-            vm.pages = pageService.findPageByWebsiteId(vm.wid);
-            vm.page = pageService.findPageById(vm.pid);
+            pageService.findPageByWebsiteId(vm.wid)
+                .then(function(response) {
+                    vm.pages = response;
+                });
+            pageService.findPageById(vm.pid)
+                .then(function(response) {
+                    vm.page = response;
+                });
         }
         init();
 
         function updatePage(page) {
-            pageService.updatePage(page);
-            $location.url("user/"+vm.uid+'/website/'+vm.wid+'/page');
+            pageService.updatePage(page)
+                .then(function(response) {
+                    var _page = response;
+                    $location.url("user/"+vm.uid+'/website/'+vm.wid+'/page');
+                });
         }
 
         function deletePage(){
-            pageService.deletePage(vm.pid);
-            $location.url("user/"+vm.uid+'/website/'+vm.wid+'/page');
+            pageService.deletePage(vm.page)
+                .then(function(response) {
+                   var pid = response;
+                   $location.url("user/"+vm.uid+'/website/'+vm.wid+'/page');
+                });
         }
-
-
 
     }
 

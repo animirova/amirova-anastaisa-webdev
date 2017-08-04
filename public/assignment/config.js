@@ -14,7 +14,7 @@
                 controllerAs: "vm"
             })
             .when("/", {
-                templateUrl: "views/user/templates/login.view.client.html",
+                templateUrl: "views/home/home.view.client.html",
                 controller: "homeController",
                 controllerAs: "vm"
             })
@@ -73,37 +73,6 @@
                 controller: "widgetEditController",
                 controllerAs: "vm"
             })
-            // .when("/user/:uid/website/:wid/page/:pid/widget/heading/:wgid", {
-            //     templateUrl: "views/widget/templates/widget-heading.view.client.html",
-            //     controller: "widgetEditController",
-            //     controllerAs: "vm"
-            // })
-            // .when("/user/:uid/website/:wid/page/:pid/widget/image/:wgid", {
-            //     templateUrl: "views/widget/templates/widget-image.view.client.html",
-            //     controller: "widgetEditController",
-            //     controllerAs: "vm"
-            // })
-            // .when("/user/:uid/website/:wid/page/:pid/widget/youtube/:wgid", {
-            //     templateUrl: "views/widget/templates/widget-youtube.view.client.html",
-            //     controller: "widgetEditController",
-            //     controllerAs: "vm"
-            // })
-            // .when("/user/:uid/website/:wid/page/:pid/widget/youtube/new", {
-            //     templateUrl: "views/widget/templates/widget-youtube.view.client.html",
-            //     controller: "widgetNewController",
-            //     controllerAs: "vm"
-            // })
-            // .when("/user/:uid/website/:wid/page/:pid/widget/image/new", {
-            //     templateUrl: "views/widget/templates/widget-image.view.client.html",
-            //     controller: "widgetNewController",
-            //     controllerAs: "vm"
-            // })
-            // .when("/user/:uid/website/:wid/page/:pid/widget/heading/new", {
-            //     templateUrl: "views/widget/templates/widget-heading.view.client.html",
-            //     controller: "widgetNewController",
-            //     controllerAs: "vm"
-            // })
-
             .otherwise({redirectTo : '/login'});
 
     }

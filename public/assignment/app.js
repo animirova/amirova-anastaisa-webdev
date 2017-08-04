@@ -9,3 +9,10 @@
     angular.module('WebAppMaker', ["ngRoute"]);
 })();
 
+// var mongoose = require('mongoose');
+// mongoose.Promise = require('q').Promise;
+// mongoose.connect('mongodb://localhost/....................');
+
+
+
+

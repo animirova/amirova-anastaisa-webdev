@@ -7,8 +7,8 @@ var app = require("../express");
 app.post("/api/user/:uid/website", createWebsite);
 app.get("/api/user/:uid/website", findAllWebsitesForUser);
 app.get("/api/website/:websiteId", findWebsiteById);
-app.put("/api/website/websiteId", updateWebsite);
-app.delete("/api/website/websiteId", deleteWebsite);
+app.put("/api/website/:websiteId", updateWebsite);
+app.delete("/api/website/:websiteId", deleteWebsite);
 
 var websites = [
     { "_id": "123", "name": "Facebook",    "developerId": "456", "description": "Lorem" },
@@ -24,47 +24,64 @@ var websites = [
 function createWebsite(req, response) {
     var website = req.body;
     website._id = (new Date).getTime() + "";
-    website.developerId = userId;
     websites.push(website);
+    response.json(website);
+    return website;
 }
 
 function findAllWebsitesForUser(req, response) {
+    var userId = req.params.uid;
     var userSites = [];
     for(var w in websites){
         var currW = websites[w];
-        if(currW.developerId == userId){
+        if(currW.developerId === userId){
             userSites.push(currW);
         }
     }
+    response.json(userSites);
     return userSites;
 }
 
 function findWebsiteById(req, response) {
+    var websiteId = req.params.websiteId;
     for(var w in websites){
         var currW = websites[w];
-        if(currW._id == websiteId){
-            return angular.copy(currW);
+        if(currW._id === websiteId){
+            response.json(websites[w]);
+            return websites[w];
         }
     }
 }
 
 function updateWebsite(req, response) {
+    var website = req.body;
+    console.log(website);
+    var websiteId = req.params.websiteId;
     for(var w in websites){
         var currW = websites[w];
-        if(currW._id == websiteId){
+        if(currW._id === websiteId){
+        //    websites[w].name = website.name;
+      //      websites[w].description = website.description;
             websites[w] = website;
+            response.json(websites[w]);
             return;
         }
     }
+    response.error(404);
+    return;
 }
 
 function deleteWebsite(req, response) {
+    var siteId = req.params.websiteId;
+    console.log(siteId);
     for(var w in websites){
         var currW = websites[w];
-        if(currW._id == websiteId){
+        if(currW._id === siteId){
             delete websites[w];
+            response.sendStatus(200);
             return;
         }
     }
+    response.sendStatus(404);
 }
 

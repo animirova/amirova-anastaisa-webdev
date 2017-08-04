@@ -18,16 +18,15 @@
 
         function login(user){
             //var currUsr = userService.findUserByCredentials(user.username, user.password);
-            var promise = userService.findUserByCredentials(user.username, user.password);
-            promise
-                .then(function(response) {
-                    _user = response.data;
+            userService.findUserByCredentials(user.username, user.password)
+                .then(function(_user) {
+                    //_user = response.data;
                     if(_user === "0"){
                         vm.errorMessage = "User not found!";
                     } else {
-                        $rootScope.currentUser = user;
-                        console.log(currUsr._id);
-                        $location.url("user/"+currUsr._id);
+                        $rootScope.currentUser = _user;
+                        //console.log(currUsr._id);
+                        $location.url("user/"+_user._id);
                     }
                 });
         }

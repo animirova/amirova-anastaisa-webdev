@@ -16,23 +16,31 @@
         vm.deleteWidget = deleteWidget;
 
         function init() {
-            vm.widgets = widgetService.findWidgetsByPageId(vm.pid);
-            vm.widget = widgetService.findWidgetById(vm.wgid);
+            widgetService.findWidgetById(vm.wgid)
+                .then(function(response) {
+                    vm.widget = response;
+                });
         }
         init();
 
         function updateWidget(widget) {
-            widgetService.updateWidget(vm.wgid, widget);
-            $location.url("user/"+vm.uid+'/website/'+vm.wid+'/page/'+vm.pid+'/widget');
-            alert("Widget Updated!");
+            widget._id = vm.wgid;
+            var promise = widgetService.updateWidget(widget);
+            promise
+                .then(function(response){
+                    var widget = response.data;
+                    $location.url("user/"+vm.uid+'/website/'+vm.wid+'/page/'+vm.pid+'/widget');
+                    alert("Widget Updated!");
+                });
         }
 
         function deleteWidget(){
-            widgetService.deleteWidget(vm.wgid);
-            $location.url("user/"+vm.uid+'/website/'+vm.wid+'/page/'+vm.pid+'/widget');
+            var promise = widgetService.deleteWidget(vm.wgid);
+            promise
+                .then(function(response) {
+                    $location.url("user/"+vm.uid+'/website/'+vm.wid+'/page/'+vm.pid+'/widget');
+                });
         }
-
-
 
     }
 

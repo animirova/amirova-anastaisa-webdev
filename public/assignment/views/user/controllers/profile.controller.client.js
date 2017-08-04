@@ -14,26 +14,35 @@
         vm.deleteUsr = deleteUsr;
 
         function init() {
-            var promise = userService.findUserById(userId);
-            promise.then(function (response) {
-                vm.user = response.data;
-
+            userService.findUserById(vm.uid)
+                .then(function (response) {
+                vm.user = response;
             });
         }
 
         init();
 
-        vm.user = userService.findUserById(vm.uid);
-
         function updateUsr(user) {
-            userService.updateUser(user);
-            $location.url("user/"+vm.uid);
-            alert("User Updated!");
+            var promise = userService.updateUser(user);
+            promise
+                .then(function(response) {
+                    var _user = response.data;
+                    if (_user != "0"){
+                        $location.url("user/"+vm.uid);
+                        alert("User Updated!");
+                        return;
+                    }
+                });
         }
 
         function deleteUsr(){
-            userService.deleteUser(vm.uid);
-            $location.url("login");
+            var promise = userService.deleteUser(vm.uid);
+            promise
+                .then(function(response) {
+                    var uid = response.data;
+                    $location.url("login");
+                    return;
+                });
         }
 
 

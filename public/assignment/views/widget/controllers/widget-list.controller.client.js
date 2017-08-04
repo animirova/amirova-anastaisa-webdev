@@ -15,7 +15,10 @@
         // vm.wgid = $routeParams["wgid"];
 
         function init() {
-            vm.widgets = widgetService.findWidgetsByPageId(vm.pid);
+            widgetService.findWidgetsByPageId(vm.pid)
+                .then(function(response) {
+                    vm.widgets = response;
+                });
             // vm.widget = widgetService.findWidgetById(vm.wgid);
         }
         init();

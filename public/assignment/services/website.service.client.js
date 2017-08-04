@@ -29,7 +29,10 @@
 
         function createWebsite(website) {
             var url = "/api/user/"+website.developerId+"/website";
-            return $http.post(url, website);
+            return $http.post(url, website)
+                .then(function(response) {
+                return response.data;
+            });
 
             // var webId = (new Date).getTime() + "";
             // website._id = webId;
@@ -39,7 +42,10 @@
 
         function findWebsitesByUser(userId) {
             var url = "/api/user/"+userId+"/website";
-            return $http.get(url, userId);
+            return $http.get(url, userId)
+                .then(function(response) {
+                    return response.data;
+                });
 
             // var userSites = [];
             // for(var w in websites){
@@ -51,9 +57,12 @@
             // return userSites;
         }
 
-        function findWebsitesById(websiteId) {
+        function findWebsitesById(websiteId, devId) {
             var url = "/api/website/"+websiteId;
-            return $http.get(url, websiteId);
+            return $http.get(url, websiteId)
+                .then(function(response) {
+                    return response.data;
+                });
 
             // for(var w in websites){
             //     var currW = websites[w];
@@ -76,7 +85,7 @@
             // }
         }
 
-        function deleteWebsite(websiteId) {
+        function deleteWebsite(websiteId, devId) {
             var url = "/api/website/"+websiteId;
             return $http.delete(url, websiteId);
 

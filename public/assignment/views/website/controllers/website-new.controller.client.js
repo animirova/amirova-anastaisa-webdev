@@ -13,15 +13,22 @@
         vm.addSite = addSite;
 
         function init() {
-            var sites = websiteService.findWebsitesByUser(vm.uid);
-            vm.websites = sites;
+            websiteService.findWebsitesByUser(vm.uid)
+                .then(function(response) {
+                    vm.websites = response;
+                });
         }
         init();
 
         function addSite(website) {
             website.developerId = vm.uid;
-            websiteService.createWebsite(website);
-            $location.url("user/"+vm.uid+'/website');
+            var promise = websiteService.createWebsite(website);
+            promise
+                .then(function(response) {
+                    var _website = response.data;
+                    $location.url("user/"+vm.uid+'/website');
+
+                });
         }
 
     }

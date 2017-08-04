@@ -16,17 +16,19 @@
         init();
 
         function addUser(user) {
-            var promise = userService.findUserByUsername(user.username);
-            promise
-                .then(function (response) {
-                    var _user = response.data;
+            userService.findUserByCredentials(user.username)
+                .then(function (_user) {
                     if(_user === "0") {
-                        _user = userService.createUser(user);
-                        $location.url("/profile/" + user._id);
+                        console.log(user);
+                        console.log("in register controller");
+                        return userService.createUser(user);
                     } else {
                         vm.error = "User Already Exists!";
                     }
-                });
+                }).then(function (user) {
+                    console.log(user._id);
+                    $location.url("/user/" + user._id);
+            });
         }
 
 

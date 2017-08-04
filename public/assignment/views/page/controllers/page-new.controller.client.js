@@ -13,15 +13,26 @@
         vm.addPage = addPage;
 
         function init() {
-            vm.pages = pageService.findPageByWebsiteId(vm.wid);
-            vm.page = pageService.findPageById(vm.pid);
+            pageService.findPageByWebsiteId(vm.wid)
+                .then(function(response) {
+                    vm.pages = response;
+                });
+            // pageService.findPageById(vm.pid)
+            //     .then(function(response) {
+            //         vm.page = response;
+            //     });
+            // console.log(vm.page);
         }
         init();
 
         function addPage(page) {
             page.websiteId = vm.wid;
-            pageService.createPage(page);
-            $location.url("user/"+vm.uid+'/website/'+vm.wid+'/page');
+            console.log(page);
+            pageService.createPage(page)
+                .then(function(response) {
+                    var _page = response.data;
+                    $location.url("user/"+vm.uid+'/website/'+vm.wid+'/page');
+                });
         }
 
     }

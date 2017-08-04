@@ -20,30 +20,30 @@ function createPage(req, response) {
     var page = req.body;
     page._id = (new Date).getTime() + "";
     pages.push(page);
-    response.send(page);
-    return;
+    response.json(page);
+    return page;
 }
 
 function findAllPagesForWebsite(req, response) {
-    var websiteId = req.body;
+    var websiteId = req.params.websiteId;
     var pageList = [];
     for(var p in pages){
         var currP = pages[p];
-        if(currP.websiteId == websiteId){
-            pageList.push(currP);
+        if(currP.websiteId === websiteId){
+            pageList.push(pages[p]);
         }
     }
     response.send(pageList);
-    return;
+    return pageList;
 }
 
 function findPageById(req, response) {
-    var pageId = req.body;
+    var pageId = req.params.pageId;
     for(var p in pages){
         var currP = pages[p];
-        if(currP._id == pageId){
-            response.send(angular.copy(currP));
-            return;
+        if(currP._id === pageId){
+            response.send(pages[p]);
+            return pages[p];
         }
     }
     response.send("0")
@@ -51,24 +51,25 @@ function findPageById(req, response) {
 
 function updatePage(req, response) {
     var page = req.body;
+    var pageId = req.params.pageId;
     for(var p in pages){
         var currP = pages[p];
-        if(currP._id == page._id){
+        if(currP._id === pageId){
             pages[p] = page;
-            response.send(page);
-            return;
+            response.json(page);
+            return page;
         }
     }
 }
 
 function deletePage(req, response) {
-    var pageId = req.body;
+    var pageId = req.params.pageId;
     for(var p in pages){
-        var currP = pages[p];
-        if(currP._id == pageId){
+        if(pages[p]._id === pageId){
             delete pages[p];
-            response.send(pageId);
+            response.sendStatus(200);
             return;
         }
     }
+    response.sendStatus(404);
 }

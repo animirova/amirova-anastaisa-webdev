@@ -15,17 +15,22 @@
 
 
         function init() {
-            vm.widgets = widgetService.findWidgetsByPageId(vm.pid);
+            var promise = widgetService.findWidgetsByPageId(vm.pid);
+            promise
+                .then(function(response) {
+                    vm.widgets = response.data;
+                });
         }
         init();
 
         function addWidget(type) {
-            var tempWg = { "pageId": vm.pid, "widgetType" : type };
-            var newWg = widgetService.createWidget(tempWg);
-            vm.wgid = newWg._id;
-            vm.widget = newWg;
-            console.log(newWg);
-            $location.url("user/"+vm.uid+'/website/'+vm.wid+'/page/'+vm.pid+'/widget/'+vm.wgid);
+            var tempWg = {"pageId": vm.pid, "widgetType": type};
+            widgetService.createWidget(tempWg)
+                .then(function (_newWg) {
+                    vm.widget = _newWg;
+                    vm.wgid = _newWg._id;
+                    $location.url("user/"+vm.uid+'/website/'+vm.wid+'/page/'+vm.pid+'/widget/'+vm.wgid);
+                });
         }
 
     }

@@ -27,16 +27,25 @@
 
         function createUser(user) {
             var url = "/api/user";
-            return $http.post(url, user);
+            return $http.post(url, user)
+                .then(function(response) {
+                return response.data;
+            });
         }
 
         function findUserById(userId) {
-            return $http.get("/api/user/:userId");
+            return $http.get("/api/user/"+userId)
+                .then(function(response) {
+                return response.data;
+            });
         }
 
         function findUserByUsername(username) {
             var url = "/api/user?username="+username;
-            return $http.get("url");
+            return $http.get("url")
+                .then(function(response) {
+                    return response.data;
+                });
 
             // for(var u in users){
             //     var currU = users[u];
@@ -48,7 +57,10 @@
 
         function findUserByCredentials(username, password) {
             var url = "/api/user?username="+username+"&password="+password;
-            return $http.get(url);
+            return $http.get(url)
+                .then(function(response) {
+                    return response.data;
+                });
 
             // for(var u in users){
             //     var currU = users[u];

@@ -34,7 +34,10 @@
 
         function createWidget(widget) {
             var url = "/api/page/"+widget.pageId+"/widget";
-            return $http.post(url, widget);
+            return $http.post(url, widget)
+                .then(function(response) {
+                    return response.data;
+                });
 
             // var pageId = widget.pageId;
             // var wgId = (new Date).getTime() + "";
@@ -46,7 +49,10 @@
 
         function findWidgetsByPageId(pageId) {
             var url = "/api/page/"+pageId+"/widget";
-            return $http.get(url, pageId);
+            return $http.get(url, pageId)
+                .then(function(response) {
+                    return response.data;
+                });
 
             // var widgetList = [];
             // for(var w in widgets){
@@ -60,7 +66,10 @@
 
         function findWidgetById(widgetId) {
             var url = "/api/widget/"+widgetId;
-            return $http.get(url, widgetId);
+            return $http.get(url, widgetId)
+                .then(function(response) {
+                    return response.data;
+                });
 
             // for(var w in widgets){
             //     var currW = widgets[w];
@@ -72,7 +81,10 @@
 
         function updateWidget(widget) {
             var url = "/api/widget/"+widget._id;
-            return $http.put(url, widget);
+            return $http.put(url, widget)
+                .then(function(response) {
+                    return response.data;
+                });
 
             // for(var w in widgets){
             //     var currW = widgets[w];

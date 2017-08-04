@@ -12,7 +12,10 @@
         vm.wid = $routeParams["wid"];
 
         function init() {
-            vm.websites = websiteService.findWebsitesByUser(vm.uid);
+            websiteService.findWebsitesByUser(vm.uid)
+                .then(function(response) {
+                   vm.websites = response;
+                });
         }
         init();
 
