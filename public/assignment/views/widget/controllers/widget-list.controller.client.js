@@ -12,6 +12,7 @@
         vm.wid = $routeParams["wid"];
         vm.pid = $routeParams["pid"];
         vm.trustUrl = trustUrl;
+        vm.moveWidget = moveWidget;
         // vm.wgid = $routeParams["wgid"];
 
         function init() {
@@ -25,6 +26,13 @@
 
         function trustUrl(url) {
             return $sce.trustAsResourceUrl(url);
+        }
+
+        function moveWidget(startIdx, endIdx) {
+            widgetService.moveWidget(vm.wid, vmpid, startIdx, endIdx)
+                .then(function (response) {
+                    return resoibse;
+                });
         }
 
 

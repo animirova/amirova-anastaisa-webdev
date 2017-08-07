@@ -28,7 +28,7 @@
             "findWidgetById": findWidgetById,
             "updateWidget": updateWidget,
             "deleteWidget": deleteWidget,
-            "modeWidget" : moveWidget
+            "moveWidget" : moveWidget
         };
 
         return api;

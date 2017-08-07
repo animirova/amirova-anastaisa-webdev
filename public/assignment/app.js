@@ -6,7 +6,7 @@
 // mongoose.connect('mongodb://localhost/....................');
 
 (function () {
-    angular.module('WebAppMaker', ["ngRoute"]);
+    angular.module('WebAppMaker', ["ngRoute", "wbdvDirectives"]);
 })();
 
 // var mongoose = require('mongoose');

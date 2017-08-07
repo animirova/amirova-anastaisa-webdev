@@ -5,7 +5,6 @@
     <a href=""><span class="glyphicon glyphicon-align-justify"></span></a>
 
     </span>
-    <h1>{{parent.widget.url}} ? ?? ? ? ? ?  ? ? ?</h1>
     <iframe class="embed-responsive-item" width="{{$parent.widget.width}}"
-    ng-src="{{trustUrl(parent.widget.url)}}"
+    ng-src="{{$parent.vm.trustUrl($parent.widget.url)}}"
     frameborder="0" allowfullscreen></iframe>

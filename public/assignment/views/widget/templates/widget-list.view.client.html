@@ -23,24 +23,8 @@
     </div>
 </nav>
 
-
-    <div class="container-fluid container-list-group list-group" id="widgetList">
-    <div ng-repeat="widget in vm.widgets">
-        <div ng-switch="widget.widgetType">
-            <div ng-switch-when="HEADING">
-                <div class="list-group-item" ng-include="'views/widget/templates/widget-heading.view.client.html'"></div>
-            </div>
-            <div ng-switch-when="IMAGE">
-                <div class="list-group-item" ng-include="'views/widget/templates/widget-image.view.client.html'"></div>
-            </div>
-            <div ng-switch-when="YOUTUBE">
-                <div class="list-group-item" ng-include="'views/widget/templates/widget-youtube.view.client.html'"></div>
-            </div>
-    </div>
-    </div>
-    </div>
-
-
+<wbdv-sortable>
+</wbdv-sortable>
 
 <!--<div class="container-fluid container-list-group list-group col-12">-->
     <!--<div class="list-group-item">-->

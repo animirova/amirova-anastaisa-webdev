@@ -4,13 +4,16 @@
 (function () {
     angular
         .module("wbdvDirectives", [])
-        .directive("wbdv-sortable", wbdvSortableDirective);
+        .directive("wbdvSortable", wbdvSortableDirective);
+
 
     function wbdvSortableDirective($http) {
         function widgetList(scope, element) {
+            console.log(element);
             var widgetList = element.find("#widgetList");
             widgetList.sortable({
                 start: function (event, ui) {
+                    console.log(widgetList);
                     startIdx = $(ui.item).index();
                 },
                 stop: function (event, ui) {
@@ -22,7 +25,7 @@
             var endIdx = -1;
         }
         return {
-            templateUrl: "../../public/assignment/views/widget/templates/widget-list-view-client.html",
+            templateUrl: "views/widget/templates/widget-list.component.client.html",
             link: widgetList
         }
 
