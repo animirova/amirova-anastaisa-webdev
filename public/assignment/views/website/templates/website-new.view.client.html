@@ -43,8 +43,8 @@
 
         <div class="hidden-xs hidden-sm col-md-4 container-fluid container-list-group list-group">
             <p ng-repeat="website in vm.websites" class="list-group-item">
-                <a href="#!/user/{{website.developerId}}/website/{{website._id}}/page">{{website.name}}</a>
-                <a href="#!/user/{{website.developerId}}/website/{{website._id}}"><span
+                <a href="#!/user/{{website.user}}/website/{{website._id}}/page">{{website.name}}</a>
+                <a href="#!/user/{{website.user}}/website/{{website._id}}"><span
                         class="glyphicon glyphicon-cog pull-right"></span></a>
             </p>
         </div>

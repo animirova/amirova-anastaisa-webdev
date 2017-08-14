@@ -28,8 +28,8 @@
         <div ng-repeat="website in vm.websites"
              class="btn-toolbar list-group-item"
              role="toolbar">
-            <a href="#!/user/{{website.developerId}}/website/{{website._id}}/page" class="btn-group" role="group">{{website.name}}</a>
-            <a href="#!/user/{{website.developerId}}/website/{{website._id}}"><span class="glyphicon glyphicon-cog pull-right btn-group"></span></a>
+            <a href="#!/user/{{website.user}}/website/{{website._id}}/page" class="btn-group" role="group">{{website.name}}</a>
+            <a href="#!/user/{{website.user}}/website/{{website._id}}"><span class="glyphicon glyphicon-cog pull-right btn-group"></span></a>
         </div>
 
     </div>

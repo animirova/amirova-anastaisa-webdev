@@ -1,0 +1,22 @@
+<h3>Text Widget</h3>
+<div class="container-list-group form-group">
+    <label for="name">Name</label>
+    <input ng-model="$parent.vm.widget.name" class="form-control" placeholder="Widget Name"/>
+    <label for="text">Text</label>
+    <input ng-model="$parent.vm.widget.text" class="form-control"/>
+    <label for="rows">Rows</label>
+    <input ng-model="$parent.vm.widget.rows" class="form-control" type="number" placeholder="Number of rows"/>
+    <label for="placeholder">Placeholder</label>
+<input ng-model="$parent.vm.widget.placeholder" class="form-control" placeholder="Placeholder"/>
+
+    <label>Formatted</label>
+    <div class="input-group">
+        <span class="input-group-addon"><input ng-model="$parent.vm.widget.formatted" id="widgetFormat" type="checkbox"/></span>
+        <input type="text" class="form-control" value="Formatted" aria-describedby="widgetFormat" disabled/>
+    </div>
+
+</div>
+<button class="btn btn-primary btn-block form-control"
+        ng-click="$parent.vm.updateWidget($parent.vm.widget)">Save Changes</button>
+<a class="btn btn-primary btn-danger btn-block form-control"
+   ng-click="$parent.vm.deleteWidget()">Delete</a>

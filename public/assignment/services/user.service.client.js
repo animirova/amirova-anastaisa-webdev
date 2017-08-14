@@ -42,7 +42,7 @@
 
         function findUserByUsername(username) {
             var url = "/api/user?username="+username;
-            return $http.get("url")
+            $http.get("url")
                 .then(function(response) {
                     return response.data;
                 });
@@ -84,8 +84,8 @@
         }
 
         function deleteUser(userId) {
-            var url = "/api/user/:uid";
-            return $http.delete(url, userId);
+            var url = "/api/user/" + userId;
+            return $http.delete(url);
 
             // for(var u in users){
             //     var currU = users[u];

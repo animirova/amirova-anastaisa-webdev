@@ -19,6 +19,10 @@
                                placeholder="URL"
                                ng-model="vm.widget.url"/>
 
+        <a class ="btn btn-primary btn-block form-control"
+           href="#!/user/{{$parent.vm.uid}}/website/{{$parent.vm.wid}}/page/{{$parent.vm.pid}}/widget/{{$parent.vm.widget._id}}/search">
+            Flickr Search
+        </a>
                         <label for="width">Width</label>
                         <input type="text"
                                class="form-control"
@@ -32,12 +36,15 @@
                                placeholder="Choose File"
                                ng-model="vm.widget.upload"/>
 
+
+
         <input  name="width"     value="{{$parent.vm.widget.width}}" style="display: none"/>
         <input  name="userId"    value="{{$parent.vm.uid}}"   style="display: none"/>
         <input  name="websiteId" value="{{$parent.vm.wid}}"   style="display: none"/>
         <input  name="pageId"    value="{{$parent.vm.pid}}"   style="display: none"/>
         <input  name="widgetId"  value="{{$parent.vm.widget._id}}"   style="display: none"/>
         <input  name="widget"  value="{{$parent.vm.widget}}"   style="display: none"/>
+        <input  name="name"  value="{{$parent.vm.widget.name}}"   style="display: none"/>
 
 
         <button class="btn btn-primary btn-block form-control" type="Submit">Save Changes</button>

@@ -1,10 +1,5 @@
-    <span class="widget-setting pull-right pull-top">
-    <a href="#!/user/{{$parent.vm.uid}}/website/{{$parent.vm.wid}}/page/{{$parent.vm.pid}}/widget/{{$parent.widget._id}}">
-        <span class="glyphicon glyphicon-cog"></span>
-    </a>
-    <a href=""><span class="glyphicon glyphicon-align-justify"></span></a>
 
-    </span>
-    <iframe class="embed-responsive-item" width="{{$parent.widget.width}}"
-    ng-src="{{$parent.vm.trustUrl($parent.widget.url)}}"
+    <iframe ng-src="{{$parent.vm.trustUrl(widget.url)}}"
     frameborder="0" allowfullscreen></iframe>
+    <!--height="500"-->
+    <!--width="{{$parent.widget.width}}"-->

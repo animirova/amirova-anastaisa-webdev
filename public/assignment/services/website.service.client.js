@@ -85,9 +85,9 @@
             // }
         }
 
-        function deleteWebsite(websiteId, devId) {
-            var url = "/api/website/"+websiteId;
-            return $http.delete(url, websiteId);
+        function deleteWebsite(websiteId, uid) {
+            var url = "/api/user/" + uid + "/website/"+websiteId;
+            return $http.delete(url);
 
             // for(var w in websites){
             //     var currW = websites[w];

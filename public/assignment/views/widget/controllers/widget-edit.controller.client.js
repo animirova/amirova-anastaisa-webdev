@@ -31,14 +31,14 @@
                 .then(function(response){
                     var widget = response.data;
                     $location.url("user/"+vm.uid+'/website/'+vm.wid+'/page/'+vm.pid+'/widget');
-                    alert("Widget Updated!");
                 });
         }
 
         function deleteWidget(){
-            var promise = widgetService.deleteWidget(vm.wgid);
+            var promise = widgetService.deleteWidget(vm.wgid, vm.pid);
             promise
                 .then(function(response) {
+                    var widget = response.data;
                     $location.url("user/"+vm.uid+'/website/'+vm.wid+'/page/'+vm.pid+'/widget');
                 });
         }

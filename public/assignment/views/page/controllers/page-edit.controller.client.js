@@ -35,9 +35,8 @@
         }
 
         function deletePage(){
-            pageService.deletePage(vm.page)
+            pageService.deletePage(vm.pid, vm.wid)
                 .then(function(response) {
-                   var pid = response;
                    $location.url("user/"+vm.uid+'/website/'+vm.wid+'/page');
                 });
         }

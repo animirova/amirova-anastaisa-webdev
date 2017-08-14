@@ -1,0 +1,23 @@
+<h3>HTML Widget</h3>
+<div class="form-group container-list-group">
+        <label for="name">Name</label>
+        <input type="text"
+               class="element-margin form-control"
+               placeholder="Widget Name"
+               ng-model="$parent.vm.widget.name"/>
+
+    <label for="html">HTML Content</label>
+    <div text-angular class="element-margin"
+               placeholder="HTML content goes here!"
+               ng-model="$parent.vm.widget.text"
+               ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
+        ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
+        ['indent','outdent'],['html']]">
+    </div>
+
+    <a class="btn btn-success btn-block"
+       ng-click="$parent.vm.updateWidget($parent.vm.widget)">Save Changes</a>
+    <a class="btn btn-danger  btn-block"
+       ng-click="$parent.vm.deleteWidget()">Delete</a>
+
+</div>

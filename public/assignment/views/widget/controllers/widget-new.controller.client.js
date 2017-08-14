@@ -28,8 +28,9 @@
         init();
 
         function addWidget(type) {
-            var tempWg = {"pageId": vm.pid, "widgetType": type};
-            widgetService.createWidget(tempWg)
+            var tempWg = {"_page": vm.pid, "type": type};
+            console.log(tempWg);
+            widgetService.createWidget(tempWg, vm.pid)
                 .then(function (_newWg) {
                     //vm.widget = _newWg;
                     //vm.wgid = _newWg._id;

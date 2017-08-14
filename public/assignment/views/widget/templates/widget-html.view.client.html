@@ -1,0 +1,8 @@
+<span class="widget-setting pull-right pull-top">
+    <a href="#!/user/{{$parent.vm.uid}}/website/{{$parent.vm.wid}}/page/{{$parent.vm.pid}}/widget/{{$parent.widget._id}}">
+        <span class="glyphicon glyphicon-cog"></span>
+    </a>
+    <a href=""><span class="glyphicon glyphicon-align-justify"></span></a>
+    </span>
+
+<div ng-bind-html="$parent.vm.trustHtml(widget.text)"></div>

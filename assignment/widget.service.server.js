@@ -2,13 +2,15 @@
  * Created by ani on 8/2/17.
  */
 var app = require("../express");
+var widgetModel = require("./model/widget/widget.model.server.js");
+var pageModel = require("./model/page/page.model.server.js");
 
 // http handlers
 app.post("/api/page/:pageId/widget", createWidget);
 app.get("/api/page/:pageId/widget", findAllWidgetsForPage);
 app.get("/api/widget/:widgetId", findWidgetById);
 app.put("/api/widget/:widgetId", updateWidget);
-app.delete("/api/widget/:widgetId", deleteWidget);
+app.delete("/api/page/:pageId/widget/:widgetId", deleteWidget);
 
 app.put("/api/page/:pageId/widget", widgetMove);
 
@@ -29,82 +31,147 @@ var widgets = [
 function widgetMove(req, response) {
     var sIdx = req.query.startIdx;
     var eIdx = req.query.endIdx;
-    var tmpWdg = widgets[sIdx];
-    widgets[sIdx] = widgets[eIdx];
-    widgets[eIdx] = tmpWdg;
+    var pid = req.params.pageId;
+    console.log("inwgmv");
 
-    response.sendStatus(200);
-    return;
+    pageModel.moveWidget(sIdx, eIdx, pid)
+        .then(function (r){
+            response.sendStatus(200).json(r);
+            return;
+        }, function (error){
+            response.sendStatus(500).send(error);
+            return;
+        });
+    // var tmpWdg = widgets[sIdx];
+    // widgets[sIdx] = widgets[eIdx];
+    // widgets[eIdx] = tmpWdg;
+    //
+    // response.sendStatus(200);
+    // return;
 }
 
 
 function createWidget(req, response) {
     var widget = req.body;
-    widget._id = (new Date).getTime() + "";
-    widgets.push(widget);
-    response.send(widget);
-    return widget;
+    var pid = req.params.pageId;
+    widget._page = pid;
+
+    widgetModel.createWidget(widget)
+        .then(function(r) {
+            response.json(r);
+            return;
+        }, function (error) {
+            response.sendStatus(500).send(error);
+            return;
+        });
+    //
+    // widgets.push(widget);
+    // response.send(widget);
+    // return widget;
 }
 
 function findAllWidgetsForPage(req, response) {
     var pageId = req.params.pageId;
-    var widgetList = [];
-    for(var w in widgets){
-        var currW = widgets[w];
-        if(currW.pageId === pageId){
-            widgetList.push(currW);
-        }
-    }
-    response.json(widgetList);
-    return widgetList;
+
+    pageModel.pageWidgets(pageId)
+        .then(function (r) {
+            response.json(r[0]._doc.widgets);
+            return
+        }, function (error) {
+            response.sendStatus(404).send(error);
+            return;
+        });
+    // var widgetList = [];
+    // for(var w in widgets){
+    //     var currW = widgets[w];
+    //     if(currW.pageId === pageId){
+    //         widgetList.push(currW);
+    //     }
+    // }
+    // response.json(widgetList);
+    // return widgetList;
 }
 
 function findWidgetById(req, response) {
     var widgetId = req.params.widgetId;
-    for(var w in widgets){
-        var currW = widgets[w];
-        if(currW._id === widgetId){
-            response.json(widgets[w]);
-            return widgets[w];
-        }
-    }
-    response.send("0");
+
+    widgetModel.findWidgetById(widgetId)
+        .then(function (r) {
+            response.json(r);
+            return
+        }, function (error) {
+            response.sendStatus(404).send(error);
+            return;
+        });
+
+    // for(var w in widgets){
+    //     var currW = widgets[w];
+    //     if(currW._id === widgetId){
+    //         response.json(widgets[w]);
+    //         return widgets[w];
+    //     }
+    // }
+    // response.send("0");
 }
 
 function updateWidget(req, response) {
     var widget = req.body;
-    for(var w in widgets){
-        var currW = widgets[w];
-        if(currW._id === widget._id){
-            widgets[w] = widget;
-            response.json(widget);
+
+    widgetModel.updateWidget(widget)
+        .then(function (r) {
+            response.sendStatus(200);
+            return
+        }, function (error) {
+            response.sendStatus(404).send(error);
             return;
-        }
-    }
-    response.sendStatus(404);
+        });
+    // for(var w in widgets){
+    //     var currW = widgets[w];
+    //     if(currW._id === widget._id){
+    //         widgets[w] = widget;
+    //         response.json(widget);
+    //         return;
+    //     }
+    // }
+    // response.sendStatus(404);
 }
 
 function deleteWidget(req, response) {
-    var widgetId = req.body;
-    for(var w in widgets){
-        var currW = widgets[w];
-        if(currW._id === widgetId){
-            delete widgets[w];
-            response.sendStatus(200);
-            return;
-        }
-    }
-    response.sendStatus(404);
+    var widgetId = req.params.widgetId;
+    var pid = req.params.pageId;
+    console.log(widgetId, pid);
+
+        widgetModel.deleteWidget(widgetId, pid)
+            .then(function (rs) {
+                response.json(rs);
+                return;
+            }, function (error) {
+                response.sendStatus(404).send(error);
+                return;
+            });
+
+
+    console.log(widgetId);
+
+    // for(var w in widgets){
+    //     var currW = widgets[w];
+    //     if(currW._id === widgetId){
+    //         delete widgets[w];
+    //         response.sendStatus(200);
+    //         return;
+    //     }
+    // }
+    // response.sendStatus(404);
 }
 
-function findWidget(id) {
-    for(var w in widgets){
-        var currW = widgets[w];
-        if(currW._id === id){
-            return widgets[w];
-        }
-    }
-}
+// function findWidget(id) {
+//     for(var w in widgets){
+//         var currW = widgets[w];
+//         if(currW._id === id){
+//             return widgets[w];
+//         }
+//     }
+// }
 
 
 var multer = require("multer");
@@ -126,32 +193,50 @@ var upload = multer({ storage : storage });
 app.post("/api/upload", upload.single('myFile'), uploadImage);
 
 function uploadImage(req, response) {
-        var wgid      = req.body.widgetId;
-        var width         = req.body.width;
-        var myFile        = req.file;
-        var text            = req.body.text;
+    var myFile = req.file;
 
-        var uid = req.body.userId;
-        var wid = req.body.websiteId;
-        var pid = req.body.pageId;
+    var text = req.body.text;
+    var uid = req.body.userId;
+    var wid = req.body.websiteId;
+    var pid = req.body.pageId;
+    var wgid = req.body.widgetId;
+    var width = req.body.width;
 
-        var originalname  = myFile.originalname;
-        var filename      = myFile.filename;
-        var path          = myFile.path;
-        var destination   = myFile.destination;
-        var size          = myFile.size;
-        var mimetype      = myFile.mimetype;
+    if (myFile != null) {
+        var originalname = myFile.originalname;
+        var filename = myFile.filename;
+        var path = myFile.path;
+        var destination = myFile.destination;
+        var size = myFile.size;
+        var mimetype = myFile.mimetype;
 
-        var widget = findWidget(wgid);
-        widget.url = '../uploads/'+filename;
+        var widget = {};
+        widget.url = '../uploads/' + filename;
         widget.width = width;
         widget.name = filename;
         widget.text = text;
         console.log(widgets);
 
-        var callbackUrl   = "../assignment/#!/user/"+uid+"/website/"+wid+"/page/"+pid+"/widget/"+wgid;
-        response.redirect(callbackUrl);
+        widgetModel.updateWidget(wgid, widget)
+            .then(function (r) {
+                var callbackUrl = "../assignment/#!/user/" + uid + "/website/" + wid + "/page/" + pid + "/widget/" + wgid;
+                response.redirect(callbackUrl);
+                return;
+            });
 
 
+    } else {
+        console.log(widget);
+        var widget = {};
+        widget.width = width;
+        widget.text = text;
+        widget.name = name;
+
+        widgetModel.updateWidget(wgid, widget)
+            .then(function (r) {
+                response.redirect("../assignment/#!/user" + uid + "/website/" + wid + "/page/" + pid + "/widget/" + wgid);
+                return;
+            });
+    }
     }
 

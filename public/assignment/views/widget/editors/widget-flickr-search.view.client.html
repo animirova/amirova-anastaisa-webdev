@@ -1,0 +1,50 @@
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid row">
+            <div class="navbar-header col-xs-12">
+                <p class="navbar-text pull-left">
+                    <a href="#!/user/{{vm.uid}}/website/{{vm.wid}}/page/{{vm.pid}}/widget/{{vm.widget._id}}" class="navbar-link">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                </p>
+
+                <a class="navbar-brand" href="#!/user/{{vm.uid}}/website/{{vm.wid}}/page/{{vm.pid}}/widget">
+                    Flickr Image Search
+                </a>
+        </div>
+    </div>
+</nav>
+
+<div class="input-group">
+    <input ng-model="searchText" type="text" class="form-control">
+    <span class="input-group-btn">
+        <a ng-click="vm.searchPhotos(searchText)" class="btn btn-default" type="button">
+            <span class="glyphicon glyphicon-search"></span>
+        </a>
+    </span>
+</div>
+
+<div class="row container-fluid">
+    <div class="col-xs-4" ng-repeat="photo in vm.photos.photo">
+        <img ng-click="vm.selectPhoto(photo)" class="img-responsive"
+             ng-src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}_s.jpg"/>
+    </div>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+        <div class="row navbar-text col-xs-12">
+            <div class="pull-left">
+                <a href="#!/user/{{vm.uid}}/website">
+                    <span class="glyphicon glyphicon-home"></span>
+                </a>
+            </div>
+            <div class="pull-right">
+                <a href="#!/user/{{vm.uid}}">
+                    <span class="glyphicon glyphicon-user"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+

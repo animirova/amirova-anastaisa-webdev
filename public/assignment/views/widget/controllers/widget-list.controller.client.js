@@ -12,6 +12,7 @@
         vm.wid = $routeParams["wid"];
         vm.pid = $routeParams["pid"];
         vm.trustUrl = trustUrl;
+        vm.trustHtml = trustHtml;
         vm.moveWidget = moveWidget;
         // vm.wgid = $routeParams["wgid"];
 
@@ -25,14 +26,19 @@
         init();
 
         function trustUrl(url) {
+            var url = url.replace("watch?v=", "v/");
             return $sce.trustAsResourceUrl(url);
         }
 
         function moveWidget(startIdx, endIdx) {
-            widgetService.moveWidget(vm.wid, vmpid, startIdx, endIdx)
+            widgetService.moveWidget(vm.wid, vm.pid, startIdx, endIdx)
                 .then(function (response) {
-                    return resoibse;
+                    return response;
                 });
+        }
+
+        function trustHtml(text) {
+            return $sce.trustAsHtml(text);
         }
 
 

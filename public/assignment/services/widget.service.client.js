@@ -33,8 +33,8 @@
 
         return api;
 
-        function createWidget(widget) {
-            var url = "/api/page/"+widget.pageId+"/widget";
+        function createWidget(widget, pid) {
+            var url = "/api/page/"+pid+"/widget";
 
             return $http.post(url, widget)
                 .then(function(response) {
@@ -98,9 +98,9 @@
             // }
         }
 
-        function deleteWidget(widgetId) {
-            var url = "/api/widget/"+widgetId;
-            return $http.delete(url, widgetId);
+        function deleteWidget(widgetId, pid) {
+            var url = "/api/page/" + pid + "/widget/"+widgetId;
+            return $http.delete(url);
 
             // for(var w in widgets){
             //     var currW = widgets[w];
@@ -114,7 +114,7 @@
 
         function moveWidget(widgetId, pageId, startIdx, endIdx) {
             var url = "/api/page/"+pageId+"/widget?startIdx="+startIdx+"&endIdx="+endIdx;
-            return $http.put(url, widgetId);
+            return $http.put(url);
 
         }
 
