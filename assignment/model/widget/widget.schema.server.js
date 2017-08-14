@@ -1,5 +1,5 @@
 /**
- * Created by ani on 8/11/17.
+ * Created by ani on 8/08/17.
  */
 var widgetTypes = ['HEADING', 'IMAGE', 'YOUTUBE', 'HTML', 'TEXT'];
 var mongoose = require('mongoose');

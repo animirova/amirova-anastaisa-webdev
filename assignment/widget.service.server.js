@@ -32,7 +32,6 @@ function widgetMove(req, response) {
     var sIdx = req.query.startIdx;
     var eIdx = req.query.endIdx;
     var pid = req.params.pageId;
-    console.log("inwgmv");
 
     pageModel.moveWidget(sIdx, eIdx, pid)
         .then(function (r){
@@ -117,7 +116,8 @@ function findWidgetById(req, response) {
 function updateWidget(req, response) {
     var widget = req.body;
 
-    widgetModel.updateWidget(widget)
+    widgetModel
+        .updateWidget(widget)
         .then(function (r) {
             response.sendStatus(200);
             return
@@ -149,9 +149,6 @@ function deleteWidget(req, response) {
                 response.sendStatus(404).send(error);
                 return;
             });
-
-
-    console.log(widgetId);
 
     // for(var w in widgets){
     //     var currW = widgets[w];
@@ -194,13 +191,13 @@ app.post("/api/upload", upload.single('myFile'), uploadImage);
 
 function uploadImage(req, response) {
     var myFile = req.file;
-
     var text = req.body.text;
     var uid = req.body.userId;
     var wid = req.body.websiteId;
     var pid = req.body.pageId;
     var wgid = req.body.widgetId;
     var width = req.body.width;
+    var name = req.body.name;
 
     if (myFile != null) {
         var originalname = myFile.originalname;
@@ -211,13 +208,13 @@ function uploadImage(req, response) {
         var mimetype = myFile.mimetype;
 
         var widget = {};
-        widget.url = '../uploads/' + filename;
+        widget._id = wgid;
+        widget.url = '/uploads/' + filename;
         widget.width = width;
         widget.name = filename;
         widget.text = text;
-        console.log(widgets);
 
-        widgetModel.updateWidget(wgid, widget)
+        widgetModel.updateWidget(widget)
             .then(function (r) {
                 var callbackUrl = "../assignment/#!/user/" + uid + "/website/" + wid + "/page/" + pid + "/widget/" + wgid;
                 response.redirect(callbackUrl);
@@ -226,13 +223,12 @@ function uploadImage(req, response) {
 
 
     } else {
-        console.log(widget);
         var widget = {};
         widget.width = width;
         widget.text = text;
         widget.name = name;
 
-        widgetModel.updateWidget(wgid, widget)
+        widgetModel.updateWidget(widget)
             .then(function (r) {
                 response.redirect("../assignment/#!/user" + uid + "/website/" + wid + "/page/" + pid + "/widget/" + wgid);
                 return;

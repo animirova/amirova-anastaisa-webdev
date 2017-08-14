@@ -1,5 +1,5 @@
 /**
- * Created by ani on 8/11/17.
+ * Created by ani on 8/08/17.
  */
 var mongoose = require('mongoose');
 var db = require ('../models.server.js');
@@ -32,7 +32,8 @@ function findWidgetById(wid) {
 }
 
 function updateWidget(widget) {
-    return widgetModel.update({ _id : widget._id}, {$set : widget});
+    return widgetModel
+        .update({ _id : widget._id}, {$set : widget});
 }
 
 function deleteWidget(widgetId, pid) {

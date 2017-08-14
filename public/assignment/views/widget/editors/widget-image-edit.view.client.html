@@ -47,7 +47,10 @@
         <input  name="name"  value="{{$parent.vm.widget.name}}"   style="display: none"/>
 
 
-        <button class="btn btn-primary btn-block form-control" type="Submit">Save Changes</button>
+        <button class="btn btn-primary btn-block form-control" type="Submit">Upload Image</button>
+
+        <button class="btn btn-primary btn-block form-control"
+                ng-click="$parent.vm.updateWidget($parent.vm.widget)">Save Changes</button>
                     <a class="btn btn-primary btn-danger btn-block form-control"
                        ng-click="$parent.vm.deleteWidget()">Delete</a>
 

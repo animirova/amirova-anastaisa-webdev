@@ -26,8 +26,10 @@
 
 <div class="row container-fluid">
     <div class="col-xs-4" ng-repeat="photo in vm.photos.photo">
+        <a href="">
         <img ng-click="vm.selectPhoto(photo)" class="img-responsive"
              ng-src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}_s.jpg"/>
+        </a>
     </div>
 </div>
 

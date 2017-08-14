@@ -11,16 +11,28 @@
         var secret = '908ed712267449c2';
         var urlBase = "https://api.flickr.com/services/rest/?method=flickr.photos.search&format=json&api_key=API_KEY&text=TEXT";
 
-    function selectPhoto(img, widget, uid, wid) {
-        var wgid = widget._id;
-        var pid = widget._page;
-        var url = "/api/user/" + uid + "/website/" + wid + "/page/" + pid + "/widget/" + wgid;
-        var flickrUrl ="https://farm"+img.farm+".staticflickr.com/"+img.server+"/"+img.id+"_"+ img.secret + ".jpg"
-        var newImg = { url : flickrUrl };
+    function selectPhoto(wgid, img) {
+        // var wgid = widget._id;
+        // var pid = widget._page;
+        // var url = "/api/user/" + uid + "/website/" + wid + "/page/" + pid + "/widget/" + wgid;
+        // var flickrUrl ="https://farm"+img.farm+".staticflickr.com/"+img.server+"/"+img.id+"_"+ img.secret + ".jpg"
+        // var newImg = { url : flickrUrl };
+        //
+        // return $http.put(url, newImg)
+        //     .then(function(r) {
+        //         return r;
+        //     });
 
-        return $http.put(url, newImg)
-            .then(function(r) {
-                return r;
+
+        var url = "https://farm" + img.farm + ".staticflickr.com/" + img.server;
+        url += "/" + img.id + "_" + img.secret + "_b.jpg";
+        var obj = {url: url, _id: wgid};
+
+        var _url = "/api/widget/" + wgid;
+
+        return $http.put(_url, obj)
+            .then(function (response) {
+                return response;
             });
         }
 

@@ -37,18 +37,9 @@
 
 
         function selectPhoto(photo) {
-            var url = "https://farm" + photo.farm + ".staticflickr.com/" + photo.server;
-            url += "/" + photo.id + "_" + photo.secret + "_b.jpg";
-            var widget = widgetService.findWidgetById(vm.wgid);
-            widget.url = url;
-
-            flickrService.selectPhoto(photo, widget, vm.uid, vm.wid)
-                .then(function (r) {
-
-                });
-            widgetService
-                .updateWidget(widget)
-                .then(function (r) {
+            flickrService
+                .selectPhoto(vm.wgid, photo)
+                .then(function (status) {
                     var url = "user/" + vm.uid + "/website/" + vm.wid + "/page/" + vm.pid + "/widget";
                     $location.url(url);
                 });
